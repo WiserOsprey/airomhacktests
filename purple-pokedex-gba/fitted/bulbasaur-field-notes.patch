@@ -47,7 +47,7 @@
          if (!sPokedexListItem->owned)
              LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0) + 1], BG_PLTT_ID(3) + 1, PLTT_SIZEOF(16 - 1));
          CopyWindowToVram(WIN_INFO, COPYWIN_FULL);
-@@ -4129,6 +4154,37 @@
+@@ -4129,6 +4154,70 @@
  #undef tPersonalityHi
  
  // u32 value is re-used, but passed as a bool that's TRUE if national dex is enabled
@@ -60,11 +60,32 @@
 +    static const u8 sPlot[] = _("Leave an open plot next to it.");
 +    static const u8 sSun[] = _("Check on a sunny day.");
 +    static const u8 sTime[] = _("Check in the peak of the day.");
++    enum {TASK_HIDDEN, TASK_REVEALED, TASK_COMPLETED};
++    static const u8 sUnknown[] = _("?????");
 +    static const u8 *const sTasks[] = {sPlant, sPlot, sSun, sTime};
++    static const u8 sStates[] = {TASK_REVEALED, TASK_REVEALED, TASK_REVEALED, TASK_REVEALED};
++    static const u16 sMarkerPalette[] = {RGB(9, 6, 14), RGB(10, 17, 6), RGB(23, 23, 11), RGB(31, 30, 27)};
++    static const u8 sSafariBall[8][8] =
++    {
++        {0,0,3,3,3,3,0,0},
++        {0,3,5,4,4,5,3,0},
++        {3,4,5,5,4,4,5,3},
++        {3,4,4,3,3,5,4,3},
++        {3,3,3,6,6,3,3,3},
++        {3,6,6,6,6,6,6,3},
++        {0,3,6,6,6,6,3,0},
++        {0,0,3,3,3,3,0,0},
++    };
 +    static const u8 sInk[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_TRANSPARENT};
 +    u8 i;
-+    u8 y;
++    u8 y, row, col;
 +
++    LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0)], BG_PLTT_ID(13), PLTT_SIZE_4BPP);
++    LoadPalette(sMarkerPalette, BG_PLTT_ID(13) + 3, sizeof(sMarkerPalette));
++    SetWindowAttribute(WIN_INFO, WINDOW_PALETTE_NUM, 13);
++    PutWindowTilemap(WIN_INFO);
++    PutWindowTilemap(WIN_FOOTPRINT);
++    SetWindowAttribute(WIN_INFO, WINDOW_PALETTE_NUM, 0);
 +    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
 +                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sHeading, 128),
 +                                 26, 0, 0, sInk, TEXT_SKIP_DRAW, sHeading);
@@ -72,13 +93,25 @@
 +                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSpecies, 128),
 +                                 41, 0, 0, sInk, TEXT_SKIP_DRAW, sSpecies);
 +    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
-+                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSubheading, 128),
++                                 82 + GetStringCenterAlignXOffset(FONT_NARROW, sSubheading, 128),
 +                                 72, 0, 0, sInk, TEXT_SKIP_DRAW, sSubheading);
 +    for (i = 0; i < ARRAY_COUNT(sTasks); i++)
 +    {
 +        y = 95 + 15 * i;
-+        FillWindowPixelRect(WIN_INFO, PIXEL_FILL(TEXT_DYNAMIC_COLOR_6), 20, y + 5, 3, 3);
-+        AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 32, y, 0, 0, sInk, TEXT_SKIP_DRAW, sTasks[i]);
++        if (sStates[i] == TASK_REVEALED)
++        {
++            FillWindowPixelRect(WIN_INFO, PIXEL_FILL(3), 18, y + 3, 7, 7);
++            FillWindowPixelRect(WIN_INFO, PIXEL_FILL(0), 19, y + 4, 5, 5);
++        }
++        else if (sStates[i] == TASK_COMPLETED)
++        {
++            for (row = 0; row < 8; row++)
++                for (col = 0; col < 8; col++)
++                    if (sSafariBall[row][col] != 0)
++                        FillWindowPixelRect(WIN_INFO, PIXEL_FILL(sSafariBall[row][col]), 18 + col, y + 2 + row, 1, 1);
++        }
++        AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 32, y, 0, 0, sInk, TEXT_SKIP_DRAW,
++                                     sStates[i] == TASK_HIDDEN ? sUnknown : sTasks[i]);
 +    }
 +}
 +
