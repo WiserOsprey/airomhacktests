@@ -1,0 +1,1482 @@
+diff --git a/data/layouts/LittlerootTown/map.bin b/data/layouts/LittlerootTown/map.bin
+index 9af76f90e1601b7d166857bafb6b4bb86037469b..823419f443d121925605c49c4f384452e9e0d305 100644
+GIT binary patch
+delta 229
+zcmZ3$wt#Iy3NwoV%fxh5Fx3yC7K%<hBLEh-4-xn%I$4GhEHYW25iB%0oKcn^s1q4Z
+zZe~<8Wiep<z-R!0KsHbw!9!7vqVp!BG}yjI@yUEld?4mzc_vkMkOrXk$r~AkC&w}I
+YaYOkaV<(q0$)fP*Gf84N=r~g(00c}Y6951J
+
+delta 213
+zcmZ3$wt#Iy3Nxbt<HU4TFx9Wh#Aq;afyl&DLSX)V)rs%KCQC7bd6V@S!Kx;QGs^M<
+zH6g>v&5VksK#>nHQ5K*q2or>pZ!$`Q?3(-?YPvj=DmRj@$^J~TDEx9J*~t%>L?*9b
+L62Nf9ai&NB+o2_y
+
+diff --git a/data/maps/LittlerootTown/scripts.inc b/data/maps/LittlerootTown/scripts.inc
+index 7009fbb..55523ab 100644
+--- a/data/maps/LittlerootTown/scripts.inc
++++ b/data/maps/LittlerootTown/scripts.inc
+@@ -937,8 +937,8 @@ LittlerootTown_Text_GoodLuckCatchingPokemon:
+ 	.string "Good luck!$"
+ 
+ LittlerootTown_Text_TownSign:
+-	.string "LITTLEROOT TOWN\n"
+-	.string "“A town that can't be shaded any hue.”$"
++	.string "BRACKENHAVEN\n"
++	.string "“The road begins at the reed beds.”$"
+ 
+ LittlerootTown_Text_ProfBirchsLab:
+ 	.string "PROF. BIRCH'S POKéMON LAB$"
+diff --git a/graphics/pokemon/mudkip/anim_front.png b/graphics/pokemon/mudkip/anim_front.png
+index 712f3ce5a85e3e0386d2de0d15244bdef8b26d6a..1a7e02b4be8c1f01c82303673124db8a6e1fc504 100644
+GIT binary patch
+delta 501
+zcmX@aK80n1W<3J~gPft0d3s0U%AKbk9QptMBTxhnsQo!%0|Nu&d`}n0kcv5Pr=IS;
+zW5Cm9pS7G}Rii@zE90_y1zrgcR_0QL#P{0I96aOfpUq+TSa0b1??JH9!(;Ufom>t(
+z!kU#BY`(QDbaSac`>NC6>I$VIKEtche2NT84GdXdA2_m{ajkxSP>cIQQRg~~DW1IC
+z4iPJ+w+IDI7hC_#!Qj%A$+49j_m4)MZz-Ady`{iTX0=74`vsOiCmzgSGF`6jtzG!$
+zhU>cp`o7(*d;5@c&D*){M=pE*boub}X?pqPz7`J2TkJJ!8SIPi3f8w+o_x>2z_mcJ
+zb>5A3_l=GMffFVuJoV<+T68Z>>S6Yby6b)dCS7G!YHRc2pSK1!YRr3ksVIRp;`dS!
+z7v+TcaZaa|CswMLexKs>N>-;-C9-t>*GJz9r+s{MnrZ#T)z^=4+*W?fs$0I0pN%Dn
+zWy5*5BUv6>WESS|FHgVRp}>`r*EsVxvqneI-}_3u^Utn$%NQomd~0!)RCMUQDM4xL
+zZZ`LQ-ZS}XXj^FDf?I2n6ofWrZJi$B$D)+XRG57wPoU7}#j)Ocf$!hitA7{g|F8b7
+iedl(4aasQV{XO>8PyPgJ1k_9fMW&~#pUXO@geCy1oZJ!s
+
+delta 935
+zcmV;Y16cf&1i}Z9DSt7fQnbDHoUGo9oV0s$d;hdj_MAb@gF&QwTE)%(|NsAc#s6BY
+z<}riCN=kze5D;z4W^(`l00DGTPE!Ct=GbNc00TftL_t(oh3%F<Yui8=hgIsqV5IbL
+zDe=<5Ybn%KD0E0@z)KfzN;<UJBzr3DkT^>Vrr2nRQ%pWcKYxJa1PaaKlU+!lh3F)Q
+zcnH{%UC5N!PT!NWSbxri6xzYB$KT`k-aF}d#BuZbH^p0RW-ge<J`-@Tfmtnt`kw#;
+z25>SHFlGSV+XL7%3>Lsspv?dT0Gf>416sEN+!=t=fEgJ>I=bG2gJ^pDjAa8kuW1?p
+z7}G^!nc53KaDM`TNdbD6FH@;|exOSMnnR0Ntya75%LR>=2Q<06sZ>%789~!@3K)ac
+z+FoXFDlQh!8?A=d;ZXU|$)M*cGzFBE%FgALhHVqeYk3tV5t;_#%I3~^i1Fp{P+G4@
+zr3^yJ=@BaOYxp-F55Gy0^oll^-bK737wCMpDNEAYdw&W%@y(Dgz=HrprX64fG<}k)
+zTF4XH!cqW`N`Vd>r>Lc6LXObZmXuckSn}nZ%IzXr4+@)a&QMZJ`T;m>moDv&epD?n
+z;~QZD5bI2I36$mE<V}&Ibb6Trwto*d<&dZ8#}gp<KGEXI@oExs#|qEkttXuv<W4(0
+zhnv@;(0`ajUC*xBhxevAjJz5`f50X7?FH8T<`%A*@x12sx62~zoUdax0b0Y~8M&YX
+zV9fxS))I7+t@i{r*=hx|!td4qYe)}ZiIG|l&ji}D0LF|K8{l0GK=dYf6Rc-2HepV*
+zXtpAT<Qq5M?0GHxaxcD%YX^-9K&K4Iy_{Dy@PB4~6eah#vZ0Nyw1Y2Ea*tQuHtdGh
+z>Q8{6+$*x=X`L>ieC7gjkFUuRJV)>I0kjzl%3W2~tCOz_P_r5$cdoLrtrDu%LrIki
+zC`9hNDpZwN)ZL|^+`+5olqhZkFj>K`W^NJUV)0{{b_mKH>dqqME>g+``4bB3z@0vH
+zPk#}5RxYR%2*@4o9UXn;yu1tFIH7XqI^t5!AwR2UnQ*!DrkGA+1I#Rj%AN1xujxm+
+zF(P&*RPJ33AEkTP26_Jqle<vYt<H+k8Ub(-DtFgy3u6Dm0U-M79A~pRn6e!SU^koX
+z5j!&HFmbPYB>H;u1}rZyZf~Lv-4l8=ARxE{`hgHV!o2?P`V9)mDrB=MI_dxb002ov
+JPDHLkV1g8!zZd`j
+
+diff --git a/graphics/pokemon/mudkip/back.png b/graphics/pokemon/mudkip/back.png
+index 1b1282d42b42a76bb443079eae6d263e7e3c9cb1..53451ce8f6bdff6653d4c48c6124a2133fb46652 100644
+GIT binary patch
+delta 480
+zcmey&@}GHvW<3J~gPft0d3s0U%AKbk9QptMBTxhnsQo!%0|NtNm#2$kNX4ADQ+)I8
+z8t}B(YrSW9!pd||{l(w+0t?g&N}IY)*d>Wy^Z)Zk$zi*uc$-Uqo6IDkKil&YlDHgp
+zl{YIf*qm#4=;l(d{D)~qUWnk%wi)kI{S_H_92j`(lLQ(qrhPPTD==FyHLLxxr`kNT
+zhAj`bH_R%E&uyQj?l9rG)p1$pUwcaStIceb4Pq<WX{3^2{daO+=$59Ln!kMmF8ByC
+zAJLfb_0)w6eYxd40abqmbhkIGp39i~HR_hV!3}YS=1qSjyXG?-s(+)h_#E>BhFL{X
+z%`QvCm=zW&XgasOwYXlzBD6rMOYYCsl!ia2<I_1DeM{cdE$4~;9I|M6Tj#pS+m$~V
+z_Z*b5babER@a(bro`VummK+`5*KI7VEj{(6aEJA_%k?RDe(XAU?#vV6!>i8PF}+!H
+zjAI7lk?O-7{xidPUhT55z1!9psS&_(!A^=FXqS9`_m*{)J?EGgDKX}y&o%aJSW)^c
+zs&7HE{rY+G>l9){KFrW+lXR=7m>!|e&~s5Ky47lLrdiaFzi;@zDYQ;H{y-oK6mOoc
+KelF{r5}E)AuFYit
+
+delta 597
+zcmV-b0;>K01M>usDSt7fQnbDHoUGo9oV0s$d;hdj_MAb@gF&QwTE)%(|NsAc#s6BY
+z<}riCN=kze5D;z4W^(`l00DGTPE!Ct=GbNc00HqyL_t(YiQUvcYui8+0B}JJ@e+rJ
+zykzKyI6Q<v3N|eyfs{^aI(F%K%~ESg|7=<cCD@BTi|lS~2Y)}AY+iJ!#}1161!|i2
+zPIm6p%5rErggg)izn|ZGcc-)CJjlqhS!KR~!%?M3F~QI4KvGpAVQ^6~f(Dbj0K655
+zSA#7LaQ5$@ad*HYV#Sa-s92`67Nq|N%qqauI<U14G#FI9Fd6M5#w$f5oe&sDqg5is
+z7%3k`qvH2Z+kg4zHZq7f3MFdcAQ!)oLxaNII0|#IjRq91*Ir0MFHy&shZtHtY9R-e
+z2y%eKVHDvz3vdN4@e!9L#)vO1(AT0}KSLAWybo3jEe4-#@U;NKK7;qZ1-=wP*rMmT
+z4c>TNzpzYtb^{B@7oOL(Hj0}J0&55<W%twu;oiCHzkf}Z`6+>$d=B~mhrY@<o1mKZ
+zq%<3`aZUjO4g#G=rIg>3o~cmV*#RK1yEu%Ani6>Z$^iO3fD6r3p9BFvpczg~4*?va
+zxjcvLM_o$a?1R(Mz;*MZM1Jjirhx%)OcfY0IJLnB<UNiTyFg&m&O5aQXc_QFh=tha
+zblJ_)Lr%B?_LC%uFY&Lu9>Ns@9>uXzS7m<>0$Kt(@R)Y_rz!(aS^!PqQvUnA6!1Ep
+jUH&F8n=4fU?sr@R=g_nT(J>gb00000NkvXXu0mjfEWZ&2
+
+diff --git a/graphics/pokemon/mudkip/front.png b/graphics/pokemon/mudkip/front.png
+index 15405baf9174ebafd0122b00e1b8a904e2f524d4..045ba1dfca218c19791f628ccfd869086186d469 100644
+GIT binary patch
+delta 475
+zcmdnP@{4(bW<3J~gPft0d3s0U%AKbk9QptMBTxhnsQo!%0|NtNtEY=&NX4ADQ%>d{
+zG2n5PpQ_oAr63UF*zi)`gPASppo4733ELpPDNjBciK^_Gp=5vJ{Mirs^$sdp3=ePd
+zbTJg%W^R)d%spH0*O2KZI<dGb^WKvQObSdK3(oQhx-8gvE6z3J7}J%QMbdn!Nr{Xc
+z++~~^ilw<9v-ld^W>sZ{3m)2>RmQet@;>&K&yORHdX_Qx9;jyfud=u2!_MC^XPM;I
+z2kp3${=c-vdc(DFL7{T?r@{xGPk(RgW6PwJvLgS(W~Q2y+l(!i^(WIg8MqcGw)(v}
+zyLk(vK;VQ43QtdSXf3*zru8s=$G$bpEWL|l=XtLFeSN2amcY@QdZz4Q4O{h>Do8bc
+zd#ifIrsK@qD|a<puUJRqOfb2-Iqr`AJtMt+Iv*tVR^@bTkd@?Lu~WO&KtVv+;rBY1
+zS*<Q-1y7Y(%=J}m(wM-i_FXz8K;Y<~`%0qo&#rjOwpM|6O?s(Rbm+Y)L2B3Ecpk5Q
+zw`Awai#{S7%vMVXb(&;f^VU&km}uCz!!*mh!$R%L_b1{-LUmdhEp4AcQReCD=d#Wz
+Gp$PzRfWiy_
+
+delta 542
+zcmV+(0^$Ao1H1%~DSt7fQnbDHoUGo9oV0s$d;hdj_MAb@gF&QwTE)%(|NsAc#s6BY
+z<}riCN=kze5D;z4W^(`l00DGTPE!Ct=GbNc00Fv5L_t(YiS3iIPr^VH#xIe<#8AD|
+zm~>?~vEt%DqKS)(+o^+&EvydW<iH^5fF_N9PLWL(t}tlgV1KWW=wO0HW<>NoWa$Bi
+ziGz#Z`u+Odd#~>i@~^*9GHfY*E$}N!AmTn(MQAra0lEs{aVFr;0NTF?c;NdgAc;Ur
+z0cZf!75)%t{0ivI0HPYys3<ZjmtSEJ^<kfhoiRV@c^&|q<0A>v-I9Sv00IPXmb-?r
+zBm->((1(bG>wmh-lCOEFAy6lChM}h?l;C+~1pMx{du?9F?6b3%TB9~hsM_bxCfzh>
+z47jk1rQW;8n*q1>vkuiMjRW)cX=%{syw|U?gCZ-Kl<M&kiq;W)%?JHk#@HbS#JiX;
+zS~;w*8CZ<%pCGU%)sW4>j{wBN1bBhQC+Rr3tiXuS27iDR#u5mzokB*4JDSh4tOLM?
+z<P(QnQPfKA^!SPDX<Y_j*d2Vj^YL&QrcJ4YZ$N}k>5c$}a+4#8yHqNJKvV8vq)4o%
+zR=<JqeL^M0{k9H%6i)VG>&5dP_)%-J50}?KXdtGYXFGU<y{Y%7o`&|;B@312qUyfM
+g;-}L7*B4*v3tFxQdpHTU^8f$<07*qoM6N<$f<z7xKL7v#
+
+diff --git a/graphics/pokemon/mudkip/icon.png b/graphics/pokemon/mudkip/icon.png
+index 5a657aa9161c4b2a911d1dc12e72afe7f811f540..ab30e0fa0c5035a264b530e967486dac284e16c8 100644
+GIT binary patch
+delta 268
+zcmaFJw1#PdW<3J~gPft0d3s0U%AKbk9QptMBTxhnsQo!%15kRqr;B4q#hka74E>Hc
+z@U%WWzxay5WI4@KqDB9e*Bs$=5@0{!aGu9CEK*|yBd7Vc`E}9$(|%sm2rzp2VsXkM
+zkv3t@gPv33p6{#=H-D6ymiJZV7t2evn9C($COPxV5~l9sc>Sn|k6moqTdgA}y16Be
+z)XFX|Q<$sLKXZ$%&8N6djh+2lc=t|va`<M=mmu|R+w#&TP7JwKyz{bG=V8Z`*4T^l
+yC0^`4v3I}QJ^$O+x$DY5+?W0T{=@Zq51F6dN!dNqp?V9*i=M82tS;-E5}E)T`*O_y
+
+delta 321
+zcmV-H0lxmM0^tIXDSu*|gM))}y}iBv|Np(DLH713)nY;RlqrjQ|6)qb?sJ^~w4|iP
+z|7xt9Vq#iBK|xumkYoS=00DGTPE!Ct=GbNc007@fL_t(IjpdR-3c^4PMdt+OFm8LV
+zQ7Ck27NxUoq3Cr+$RS+nrY*RbDGbKx!e$%~AZT`Z{DdF!m4EuVf++*uWCHsM;tUIz
+ztr-<;*F`|B!Rbyf0D)RUQ`i@9WkF<(tye`Es5n%$D0W0%Yw-dO5jCGqVxvQJl}YU1
+zx~{o4iPKG-Y2LvRhf8|QFwk4SAoWMZSr3@yAw&Q<xF;g$kyS`QIHR9Q0MNOP&z5+E
+z<@?yLz%AdmC^|c!BnpR}7sZ}i)H+c(=2>&%9+=rx5|0>%@zGq<>@IP@ujb<k!EuwZ
+TW|y)r00000NkvXXu0mjf2l$p+
+
+diff --git a/graphics/pokemon/mudkip/normal.pal b/graphics/pokemon/mudkip/normal.pal
+index bc3cc1b..11eecd7 100644
+--- a/graphics/pokemon/mudkip/normal.pal
++++ b/graphics/pokemon/mudkip/normal.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-49 164 82
+-180 189 246
+-156 172 222
+-139 156 180
+-123 115 123
+-255 180 82
+-246 156 65
+-205 131 65
+-164 123 90
+-197 205 255
+-255 255 255
+-123 197 255
+-90 172 230
+-49 131 197
+-74 74 131
+-16 16 16
++0 0 0
++30 49 66
++55 103 136
++97 169 185
++202 224 196
++255 255 241
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/mudkip/shiny.pal b/graphics/pokemon/mudkip/shiny.pal
+index ef5447b..54c9cb1 100644
+--- a/graphics/pokemon/mudkip/shiny.pal
++++ b/graphics/pokemon/mudkip/shiny.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-49 164 82
+-255 238 156
+-255 205 106
+-230 172 90
+-213 156 74
+-255 180 82
+-246 156 65
+-205 131 65
+-164 123 90
+-255 246 197
+-255 255 255
+-222 156 238
+-197 115 222
+-139 82 156
+-106 49 123
+-16 16 16
++0 0 0
++54 36 59
++123 61 112
++192 118 158
++248 203 186
++255 255 241
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/poochyena/anim_front.png b/graphics/pokemon/poochyena/anim_front.png
+index 0579a1fa9b169cce42f4b74e80d51f49a1421ad9..693edc73bcf7756c697e673317695af9fdf2eda7 100644
+GIT binary patch
+delta 466
+zcmcb@{*iftW<3J~gN~A6il@!ehR8cRTmHN|2Nb~r&Y##F$H2f?<LTlUQZeW4)WE)_
+z3IeYFiTVp}G#0X|?ftLn^N35POhG!}8MDBXk8#hxx|gectkXF3^qQ`&&X4?ssTozT
+zmEr|LzN$Jdne?Jw>q-XaqO(WbrT=lW8ZKVsRd`e5MMq5fJ+q&74_`U*^gLW{`=??S
+z=k07(OZ|SXhYZJA+JpbQJWOCZGecF5Bd_c8;xea>q9?L$TJD@;30BE}zg`ze63o7Q
+z_?6t|0G*aiibpNfb*9N}YBG6!eAc!!*1ck%IgYm~ob4<;{5(c@Nxh)O49Q1w!q++N
+zj3$3zICFFf-{*ZL#T{IS&Nxg7xULw|WO<BFr&Nq}7gJlSZC0697VELU=Y_gX%0?tD
+zicXsF*~lRwu|JaijEMb@XOlHM?9~DleuVI~pPrh#DQZW>x>G9rI%3<l&C_~SW~s;O
+zdV2o8c>;&r4m?$VF3+*yXN;=%^SR&FYh<}4=(b5YtvmBzzThM7*XkvY%@?Frl>g74
+yRWrY!{Qq*U^6&2-zWe7r*Y)7tzwh7GH`njfSd)E|@303braWE!T-G@yGywp8t;tvb
+
+delta 953
+zcmV;q14jJu1JnnQDSvatq}9#d|K@}Lq<ec>Qly-$gL{igQerVNLB+kz|J7Qwi(1}F
+zL997J|Ns90005Dn#~A<s00DGTPE!Ct=GbNc00UA<L_t(oh3%HVPTW8c#xG5{Zsmd~
+zSJBg^%}Y>>jg^8>c$cey!X8@`S44-8CMOCX*(Q`o$pauIMSseqNu4Us02j%BD3Z<W
+z8i>y8GhIY+Q(4}hXJ*IteqXP*ibomjx?>S(@n*jRDBSB_IqLwb!0V}DM-6t&4^;BH
+z6Hxm%=Uq*p^E{FrHPjZI$qs-OoJ%Q}*C;pwV6qJ8PZ7re-tcrujbnj0y83*%w23z_
+zQ#|^$nGWSfJAd%|J0gDih>@&oSg);0u?{l{#txf_n83+otcig3F`o|(ngFlV$)8eZ
+zn5oi{vTQa%HAe4CT9-208ptziH&g>BW?i1Hi?)$gLU%CK861ZQ&)TUWOp0BeB>?us
+z3KS-T90q}aV8;R?j+kg*2CfU9ouMy;FeNeo7~2VG7JtZn4M=|p5Y;WnEX!bQ?}C7{
+z8t{D|!j@eyZ?>h^0|+wkS^+5snVf}g2<-qQyE5}dC<xeYnL|JDP6nBeOM%|lJ&~}D
+zv8n*}Jl6(t$O%x_J?6TYk8GfT9AK)iN`ZOHAWB{afoZ<PQOjw=5X(p(H2SKgK##?v
+zv|eCw+<*H2C>4qNNwwtvVlj4|b0$ak`YKkjivJ(%q5qQ2y1apoq{|!Vh&rUdH=>7C
+za=tXhS^#8mZaPv_0ats`KkdinmeetyJIOsTcPw44MCg;=ZkS_|4eY~=<<Ev5Ns><e
+zM3L}XDYyV21EO=YflOrcsAW8aR~JM5C_B``1b>Y-3o*Xhyg(Ah{oKJbNz%DUkZyn3
+zyfo5#y6yxCh=nHl69SGt)asr&K_&uN@F0Eu?asmwu)77pHY{}6fANF-#oO{$+)2E*
+zVPO>gpI>o89wwR@=_O%>@uF~&g;CRYDc-6#se1?ux=1bvF{UQ&)!l1&5H+d0Oztwk
+zF@NkV5Jh^w4Vk$H5RGxGicE}eEDF6BnB>+gt)j>zNP)a32wU0mwDvG@C}MCU`vc8g
+zYGEMVy-=ybZFZmm5W`c4fLLkA(+Zr=2NL*HX?3<gyPVt=n`d=<Wh+4U7`O&tHo(Bs
+z<{{@oe@o;aEx<Fk)`a<M3T`=o+p16N_A<+K+H9eWNA)yn4`C0I)!JXCO-F2T51b>b
+bc(m~sp(p&-ZM_2c00000NkvXXu0mjfehb6H
+
+diff --git a/graphics/pokemon/poochyena/back.png b/graphics/pokemon/poochyena/back.png
+index 6d13ed43a9f89f3893b0300a93bacc014545bcec..e8337585792f72b11263a3b2e9463bcc9ed3b3d4 100644
+GIT binary patch
+delta 411
+zcmZ3&x{G;&W<3J~gN~A6il@!ehR8cRTmHN|2Nb~r&Y##F$H2ho>gnPbQZeW0l)DoT
+zEAX_~3yLo&c~HpuZhu$EgvHDm3I+UsZZy30i8CrLuKFO6xpy~5;*ZS>Z?Cpo)xC#t
+z#Vb{Z6!*dt8~Wwy6>h06i~GmhJR>qNwfLsti=Hhr`+e*9GHg2<E$eO{zP^3t;aFpj
+z+8!RmhSbJ{tMd(5#15QkO=7sA`ZV2kf`IB2{hl{6Pj@iuguXt$oo7*pne`i$Db`2M
+z247pzSsf&?h~deSI7Y4GUzsL+JZ8dRsp`QHxXAxRfVLv<dzJ;;zt(@<ksuJ3r^2;$
+zY0_V{Lguij-ZcjEme~c{3d{Ij5$4!-XFcZwR+~$1v2H2eor<3xOtlg<^tSzw!gZ<N
+zQ>4Q#yt&kxZBhG;2qRtQCy&ei+PqzmC$p^Y^y5FO3RX(n)_BdI<!0%h`z6Cj|LU0o
+s#l~0oz2=>Hah_pi;&JI;*FSQLyyf@*aJl!6FDS@8UHx3vIVCg!0QNGhQ2+n{
+
+delta 646
+zcmV;10(t$q1Ed9zDSvatq}9#d|K@}Lq<ec>Qly-$gL{igQerVNLB+kz|J7Qwi(1}F
+zL997J|Ns90005Dn#~A<s00DGTPE!Ct=GbNc00JUOL_t(YiS3lJj?+L8hF#%u<?<>X
+zfM?(_W_?@bDAwi*q%_`1ptx&JSV+jC*o&q@qNJgupx{Y(fPbs-6}jXpGrMaiwxgv$
+zqPs~VS^2;G^Uv6uBzda;Ssj1GF0PBBO~k9uao~Z0`?ENZ7Dbz8wD=3qwQGWlC}1A4
+z=VYOcN64}>f;b>PWf>dDsKFyS9ikZpk<(GfT09c>2Pn-1NSBApOa6U{Xo{-|uo(#M
+zV68+figGmuXn)gRJtI=w0PE&wQ4ca35-pQuAHnjB_~F|N^QMnsvh22`Jl%LJ=fExA
+ze%;~A0HkhlWB@npk@^T6^4*v3_^WqVldDP+BWnsnApSu7*aK-G6d}KO3ljS}44NuW
+z&@F{6I*0Rm1SD5I5p>`TtKX`_<1XEpy@^{hH(A|v?|+-40Ub+wqFmkWMiFQZaLhd(
+z@7DdnUtMbH4LGIg23?S?{FF*ckRE_yr1Lp)(_3w|X8%3|PHwhal&wGqF=QA&F2c`m
+zKo0uczypxOsN_Ea)(${^JqE%(W<V*9;gjUkXWl(#POz3K->N(T04jEXQbX>BeLc~+
+zh4mY<7Jn<?_x#)mrIdG8asZ|og^M3rW0m6#%#Xfsn)_Yep+@9h=hFyV2e@c?(skWl
+zpB(+|Fx+(_>bki($>{7G7rphs_SAvDX*9?Kkk1`pv2RS+-o9>x!NtsAv9EVnU;tWy
+gSjYbYpDI#+09EvD%1FMz+yDRo07*qoM6N<$f}5B-Z2$lO
+
+diff --git a/graphics/pokemon/poochyena/front.png b/graphics/pokemon/poochyena/front.png
+index 0eee404a7fde5fd1bd4bc7f55f8f0319dbdcd16f..4ce780fd346211be214a8e6023ef3ab9aaa2065b 100644
+GIT binary patch
+delta 450
+zcmcc5a*la|SUrOS3o`=)Lxg+ITOef+;1l8sq;-@GQ#@^!Hbmap+4ASzIiLt0aQ?*Z
+zI0gpBNKY5Xkcv4^r`*nMF%WP)KSRXe-GN0+OTNTAsc0#@V=!-+%YR#fXZPyAog%4r
+z2l`(dmnSgP|I5jcp0&GnqBv7%t(JhLLLTSw7p#l!9&(@mkJYg!I3!cgy2<Lvo=@9O
+zerHYRPdc#l{<jaWQ>R7D7f#t9!>QSn-txlKM#07Hz>cmR9Din9pL=hKfa*12H@-fv
+zh=#)RUuDl}9#OhB?c}5Np&DXA)&WItxW!J#hBTG@F4T0_cC0^t_Km_kmP@sUbwB3x
+zF}-A%*r_<*uyVf0rcDj(30Z2TGq(NQ*5)Ii#%AR7xAy_V8cVYTyReH+;s*>ir#|y_
+z*KN4H@7WcfyaRK%W4oK8rZWl|N3XL=Joe|%^#C8oe}<h*np4U;_LXg0xuxV&O~z!a
+z4G|H)>#RJkUw(dR(Z)mXtY0@OtW~L*`?EmsfK=A>H|4+fFIrJ};1W-1)2*4BHbPI>
+e%i=HW@00JJ7iN|{`#C2l8a!S7T-G@yGywoS<h~RD
+
+delta 596
+zcmV-a0;~Pb1K$LY7JmT%1Oos70P$#TH2?qrFi=cXMRUcZ)y>}j=7ayFdwW_^q@1jS
+zdy7g^Vlgp6#l6k{)mpTRTHZ=QtT{pd|Nj600Fj@^82|tP0d!JMQvg8b*k%9#0o_SN
+zK~!jg?bNZ3(?AdaP?zaeDUe8YJ>S4jq!{~LaaY)jt2>H#Vt-M%K)xi^>56qU4SWC}
+zfCS&bw~#}!*H>`M+V0}@(gDRxWoe#gX2<dd0mpwC;^ax9O+MXtKpUO{U3);6M1jdX
+zJ;YslYl<r`FgH)1d_&;!Wlo+RW(`O30MVu?5zY5#Qv|?b4lM2wD}X3_nCWpR5z8On
+zzRV8s;q?yR|9^b7%jm)letk#8ub(levB%`Ibvqnm*n|-8&I<{N`+e1m#Gd2vadmqR
+z(#{;7bzh-2dP$_uhp;`$kJ{#m)Otn7$!Tm4+z)wrcp+UY?PNbe)>l|At%xQk9mG)L
+zI#mV0bYm^bp#o(|A|ZJ*0eOm8^q__?glJk}A*CEzD1QK`rUmRSFpYaa@eIhv5lATo
+z)$|k=97hnxF>D;C5K+DE^9dvhA}1hPDXKT&2HXIOYf`b?NDD3<dsrmVVWnc61wj=a
+z2rhAJI)JxPI0X$f7MN2Y!VsHs3R-9Y?)xV#v2iRyr#eZ7;Wd_y+eRSjyuWDrCr5)o
+zY|Gu45KY^y^Zzj>m*bme=Km5~^xbnq4S$~F--h`^Fkrxd0RsjM7%*VKfB^#r3>YwA
+iz<>b*1`HVdW$+v3<J&^zeu9nw0000<MNUMnLSTZJ;s^Br
+
+diff --git a/graphics/pokemon/poochyena/icon.png b/graphics/pokemon/poochyena/icon.png
+index 7e6be6a1730324481c34a35c145c78e26741d6ff..4e032609b3a6ff3175cd50eaf8f0cc59c373e403 100644
+GIT binary patch
+delta 260
+zcmaFCw3KOrW<3J~gN~A6il@!ehR8cRTmHN|2Nb~r&Y##F2bA96>EaktG3V_hL%u@>
+z0xZvEvNkyPE66Jd{jX<I(&zZssQc@N$aINGY$_^JJ5E_gt<PK9?0<|gp-U`%e&dag
+zhK;{AFr>OERM*B?++#B1IN%lfZKdMV2pK)o1is7Sh3A;|r9>R(JrKdV$kubORo6N{
+zu5HITvKL(C$<%hRDcO8<lKElFCdG1QfmyNs3@k^w&YDip+f~JPC@oH}eMiP@Xa1L6
+nX+2+0@ZUCnUeEXEmgOBrm#)y%<KaGcL4Nae^>bP0l+XkKx{F^I
+
+delta 328
+zcmV-O0k{680_XyeDSu*|gL`{>y}h*m|NnDy&7`dMw1Zmi#f!zPDfad$_F__$d(Fk9
+z&Alm{Vq#iBK|$$6v|j)K00DGTPE!Ct=GbNc008DmL_t(IjpdRtZo@DPMRfuT<kT(>
+z^bcU6$LyFB6kT&F)dw&XW@-nsRM1dPI%i2Z7~lg<$^I{dM}Mz)epYoL)lkg21C<&g
+za&-X7K_L!~30VPuB@z(??BGcB&NhJR;PsmriOV1O`6TNBDSgL@8kjCibZ1+^>t({o
+z${17c!;oeyv;{PyEZgs0zQ&tB@DB_nJZ;sRKIVpEtR1MuDm{ENqXD=<kr_2g-lor4
+z;Ne@eFMA+$a6zDty`?X?Pc(%<J$%)-W{?9TbXKbPx!Qb5Yrp(#hRs(xBuv8<7<meJ
+a^y3$ODO>bFEKs}v0000<MNUMnLSTX`qLmr|
+
+diff --git a/graphics/pokemon/poochyena/normal.pal b/graphics/pokemon/poochyena/normal.pal
+index 4c386e2..04b391d 100644
+--- a/graphics/pokemon/poochyena/normal.pal
++++ b/graphics/pokemon/poochyena/normal.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-115 197 164
+-213 205 222
+-255 230 131
+-255 164 123
+-123 90 82
+-164 156 172
+-131 123 139
+-74 82 98
+-49 49 65
+-197 189 205
+-255 213 90
+-180 139 90
+-222 74 65
+-172 57 65
+-255 255 255
++0 0 0
++44 34 49
++100 73 60
++165 128 89
++220 185 132
++252 238 206
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+ 0 0 0
+diff --git a/graphics/pokemon/poochyena/shiny.pal b/graphics/pokemon/poochyena/shiny.pal
+index c30dcec..b18e5ac 100644
+--- a/graphics/pokemon/poochyena/shiny.pal
++++ b/graphics/pokemon/poochyena/shiny.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-115 197 164
+-255 230 180
+-139 197 213
+-255 164 123
+-123 90 82
+-213 172 74
+-148 106 65
+-115 74 41
+-82 41 0
+-255 205 106
+-123 172 238
+-57 74 131
+-222 74 65
+-172 57 65
+-255 255 255
++0 0 0
++44 34 49
++60 73 100
++89 128 165
++132 185 220
++206 238 252
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+ 0 0 0
+diff --git a/graphics/pokemon/torchic/anim_front.png b/graphics/pokemon/torchic/anim_front.png
+index c1aa67fd13c5a25d7e07ddb3c2acc1600cb31f1a..5290c263d79d198f57755999188deb94cd4400fb 100644
+GIT binary patch
+delta 520
+zcmaFPwv1(hW<3J~gSE0jorA~S6vzL^^Zx&N2Nb~rB-N5y85kHhdb&7<RLprh^=vMS
+zB2TNmjb_73247a~rT>MLmNtpXIxt3_V3asxbW>w_%!gE)Z;yZSCq{e<^7(rzWo453
+zflMh^Mm8>EW~2Jw`aI48)f1V^IFiyEUWz<ZYVUl+bV2i+h}8jsgHpHurLlP*xuT#o
+zrDQ+XCFPO^iB{>!TV`F6D4F=-T8-Y%q?^Z0md?^iQD9%N;#mrVwBV7Hq9+WK_@6&u
+zQCfCzu?$0zK&j}VK4y1;@U!l6r)<1bXFg*WuM%w#cIc7nnIP(1pB=9L;+Mf$?Z5_=
+zhCAIq<D%^iYk21~op>4AvHj+iwok#67VkHxxXy2}|L%j2HxrnSOlnbK*nhX8CTIH+
+zsi`m5bV@Vap5VN+U|-d?a;<etQb$AgF72Ap@MLYfdua_{gHxi<ry$$@vec~Oy{u(L
+zOQz0rXQ*a0ExsP5?%ct!EVjPtcEe>IEv0zILofO6u4tR;?;mh7vyJ)PMW<&CyL->`
+zIPG2)D=jC$?!mU`aSh+UlGXLhF8nG^92E*r(-}Cg+^F5U>UdiFt&VlPJdAfWuAWi-
+zuao_I|B1xh|6Bjg=Uemk{H=d~FWmYE6q}ZRuK7)_gNuhQD0)3z{an^LB``Jt01t@U
+A3;+NC
+
+delta 843
+zcmV-R1GN061m^~jDSt7fQvcqR)xDIolzV$~d;is9|HV?(oH>hoTAa=Q|NsC0q&fd;
+zIn`P@S~)Qg5D?dysImY600DGTPE!Ct=GbNc00QMnL_t(oh3%HVZW=)l##f@?8sF)h
+z#*Jl(iYAJXo4m*Zjg{)w6d|dwX{=yNF;_(9J<{+1@CNKb9DgZ)B=4SGSrm5%ij)Xh
+z4wu;lr^(JDrHkSzXuj{h*|`PgN62ISeK}#ruD2*|aI|hQv^wN1rB&46(0Y+lT1Nwl
+zv<?CE6>2!AbvQxw1~nW7HAbtAFhmWEeP#{#Y-250bHa3W%m#<OoZKqCfh1&^5M!mA
+zkLhNdO9=@Vh<`4I!yzAMS!RxRuSQUu&ye=yYA{d<oX^er)<6{`@QK-wXoE^HN4WgA
+z&W$s8Vl)`=RT+ES-7D$(r}`Y54UypduCEM{$uLVUcg5OZOmL;|@ABCaJp+k8mP#T{
+z(J4p*_q3kE{3>0}ZBs&}Ydu2lf_SM=x<qf2T%=OUFMmBOfOHQ}q&#LU#|+=AO$lGe
+zfFcnNr6<u5=&!Ma9u>URs@7g$2Je9LPjM|xu~WJ*<ygj2qGKdHf;r_iro)A*iqQZ<
+zmK$_J@^rR%W-}0Hepa?b6!xFzP6;;@wnM)>N3VjA%8p;QJP(G&lT*v{@E!_#XVxJJ
+znR|Bqv40-xpR9IggKnV{Rq$8WaY73Ob!jaG!l<K;qo7SyVawlPOzRjukRodaO25E5
+z6xnrP(X(v&4)~*u=q_xWaiaOd$UvGN;IH-;A)KwN;ZXAjhB!j8gMx?NIY89SpAAMD
+z4ip_MvZ<j%I@&-NeLi}i3*%b#`ut%nBddQI`G1l}xj=iQm%cA1@9)vwpU6__>DutY
+zcnElhVw@*vg4%dI%J4Iggj=UrN9e+~;!<qD3)qQTpWz!L1Bd+DeS;dhz!&m32(XCm
+zVN(N0t%DeTFbyD#BK!cqnH7MbEqZJPAP3lHben4cnPL&y3P9p-JuE_K0Ey4g?V7Ft
+zBt%E|w+D_Gj)?DXFJDe^)Pt&&!hPFzFZku{&}!H_-PyBsAUBl_3`9J#0WkjG`URHp
+V6fpzUx7z>!002ovPDHLkV1loXldk{(
+
+diff --git a/graphics/pokemon/torchic/back.png b/graphics/pokemon/torchic/back.png
+index ed2c53879679829eb429414e7c04fbaaaefb0d8a..39ad464a7c785d0c46d2470b8b5961240207fe53 100644
+GIT binary patch
+delta 471
+zcmX@W@{M_dW<3J~gSE0jorA~S6vzL^^Zx&N2Nb~rB-N5y85kHFJzX3_D(1YM;@I~@
+zfyZ_JT04fA1+7K@ja@VJ7}O7JW@uWOVs$%mi@EE=<?r*4Gu1slKH=l)?Xv|Rvc-f~
+zTO>@LV4ZM8ymf88N5uz+8(l5d3f@j~Hg{Cy8dM7-BN_q}J!brW$JN-?qqJ_yx;@&P
+zv~(Pf7VbXzz}5AG@1g5wmQMTadnfnR4z7d-(FO8HD>)XdkO=c!(D}$VB;`@)NyBaS
+z>{rVdx(KOo>AH33%5U3RdFI^`>z>{a8wV?fRK8gSTF)BaPG%H3SHDH`j+4_q=3M1%
+zmNqSCTbj1kJJ@UOVKS{$*spQro5Hm_3v#?7=4M9EJ~qiCX8wvvtC{sWce1<gSHHb9
+zi#dw#*7pS&vzVA)2r2Qd4ltP;zR|Fd)8UBLkwy1^YL)5czq#;6IqIWY<0buHUY*t1
+z`+jtsFF(Qj)NB3P@1M772hXt#SYL1;l39X%&cZq^jR|&sx0xp~m>$!6aoW#rW({)|
+zo77Sfqu+;mGR{1WUjEj$+kkDO-)yIY{HJ(7|L@;#)Lkm8lY96TD7rjd{an^LB{Ts5
+Dx?jha
+
+delta 546
+zcmV+-0^R-g1Hc53DSt7fQvcqR)xDIolzV$~d;is9|HV?(oH>hoTAa=Q|NsC0q&fd;
+zIn`P@S~)Qg5D?dysImY600DGTPE!Ct=GbNc00F*9L_t(YiQSaFQo=wKh0{ruyn~fJ
+z&l1TCWJ9B46)ALvDwBer2O?N%kzK|Hhr-RoLZk?R#*sq6n}6NJ0roDmj%Oy5;(R&x
+zXOkGlKhoLl&2gY+H`>PmQW83>MkG;lbP)j%U<R%(VoHE$p8#B^2A2jfNf8kef&;x&
+z0B%bMyxU<>gLsgFZVc8?0WJ!d!V}Vr0nhtK0nsD5DypEq+ylv82x)R0FazRw*%JVi
+zKWmEke#ZRiU4I-8abo6OXY}K-6AcC$BEO&0gvD_T1PWLgql`fS2#xrrg@iwNzyjzF
+zFiep#Bp`YiL`V%;fzl{~HlmRVWF;UnDATp@E2W7;V0H?4YaaryCjeu<=d*Ja*ozol
+zC}Ws>hhP&Wz_2*ymCv~{C1}kh!r+!5zG2OIr34GuA%8SJ^tly&u57VN_#&G*Pjcd@
+zBM9HGzCPPSiBH>=fNh7Ggv%<SrRmXb$bUf4z=3tk8GFQYniKpJFLpid2HkFl_3$15
+zm~h6h_f1MJvN#P5u;wL!9#vUG2oJDwV<Y_>e|}X@O+jpR1;XVb+~$0t@!=QK5BsTA
+kZ)<^7*c)3K$AG`9AL1*LP2M2l)&Kwi07*qoM6N<$g7Ad(QUCw|
+
+diff --git a/graphics/pokemon/torchic/front.png b/graphics/pokemon/torchic/front.png
+index a8eeb26999bc82d372aff0ac6c0bfa771eae01e7..b8d67686dd0c7135323233192ed0e74357040363 100644
+GIT binary patch
+delta 491
+zcmZ3&(#0}Cvz~#0!CKj%&cWkuisS#|dH?^s1B&1Ql4?n<3=E7@JzX3_D(1YMayFMm
+zk;iSmt!BeZ247a~rT>MLmNtpXIxt3_V3hEgkuxQl?_+Aj@3+tGS^nG(p8W0V(aUFa
+z54@apmSJ+s8i&OC|Bi`XkMyz*_<G*qIx%5Fx0F~XcY?<pRUQYA2S>ifuWnLS)a~?K
+zs+>2ehle@9@J`H<&5M+7s6AYIyoT@U=JTmp#g-Zloes9ARx;=<Tp{B1h@q(C`6Cgb
+zOCOi8H^`~nZr$|wpzu}m?}5wA`fqtIJbv)_Mb-zR0fyayU4btiOVu+yw#of`if4l8
+zh3eA#w_k|2_P-2noHT!FMPzKP=6zAi<Ex!MJm$B{F|XKD?$a33eSt?{n{@y7x6{rp
+z;Bq!CW=@!$l_6xe<-|9y$5Izm*Zo=>yM*V-116iO2enMAT0Hn}DfQQ--a2xW(OUK5
+zZ5`tSaSPwcEw?)<A>8oA`@PkUlsAh6pK^7iTktK946{_eD3UJ9w?m!1mHC}sZD_!+
+zP}$`#89z3NDO8?&{vdq&FLec01>s~BhMhI6Clap7&AM)5X1&F+=kgMPjm<`f|NQ>O
+Y`Hs8HTyf_`IZzaOy85}Sb4q9e00EKEw*UYD
+
+delta 517
+zcmV+g0{Z=m1f&FzDSt7fQvcqR)xDIolzV$~d;is9|HV?(oH>hoTAa=Q|NsC0q&fd;
+zIn`P@S~)Qg5D?dysImY600DGTPE!Ct=GbNc00E*&L_t(YiS3fHP69y`MPEYUHZDOM
+z8)8C5XN-+MG7F8dVx$nQ7Hvq7M5TgH@dK7W;4MTGwP0qkvVUTCX-o)Fa0ZFhyfLxW
+zTWoXB+<AB20{rXua@tM1?=u>3R=x%Bn{dsTM*<EjZ!pHnWWWY1s{nRJ0ynIzCh%TJ
+zpk66)=2hEm65#xaSJn5Dx`Nk+e5IxtaQNx)Rr^&UAxVT7Xx}`hn;=T55;}x0dc7VF
+zk|Z(5yQ97mVt-0p52GN^35Zj(zZqz$1RR=y$qLX3<_H(ReKdB+ihdB_myCDJ-?cUV
+z(BFX>2nFK&P6MF{NGJDsu?CC@uFU1~m@dc}AbcnkL==-PV50W4Zee~(7tz*IDPH>_
+zu?xt?Li>{3CUjyc<#U$`fZLOXloy;YDd5ekN%cEc7=97qFxCj`%0H(Px=f(&d!=Iv
+z$Q~g+Mx{8WrgT-yfsCXiYfLayJ>{74)k3u*G5}!lgAcHb)7hR40B71NS|TzBhfAkG
+z1DUOMt~e!E0kFT5D_YJgV77f_Ij`O!v)i(k1ej*+{vXyS29yY_vh7?t00000NkvXX
+Hu0mjfHo)wM
+
+diff --git a/graphics/pokemon/torchic/icon.png b/graphics/pokemon/torchic/icon.png
+index 6346e2272ec9d41dd8a33e135da7cd5b89039d55..32a0e5b052a0d6eb7277f046a1396acb84c7671f 100644
+GIT binary patch
+delta 284
+zcmcb_w1;VeW<3J~gSE0jorA~S6vzL^^Zx&N2Nb~rB-N5yfzro4T^vIy=DfY+=y%va
+zp!MN-=W8b(GEDfz;<5L?-~<atX$uG8jp}I+muOZWVM|NwpI^Usqx)fg*QoD3JJMFm
+z1zh$sS4w?RzOeqO^~9xhhne_h>snR%dF)j=-=ebU+R7<b>LrW#?YL5BUNme`R9KcK
+zb${PQzxUH7US^zo`ocQD?JOH*`d0_I%juTK^*wisF{s)m`0B-5ySSfsW=$%}Z_0cf
+zWYti$k1O(&TIs!0)0}jlev|djjxSkl@ae&;h2hV){Ym@NfB3#cyQqGLb?oin`QEG`
+OKYP0RxvX<aXaWFrIdv5P
+
+delta 306
+zcmV-20nPrr0@4DIDSu*|gM))}y}iBv|Np(DLH713)nY;RlqrjQ|6)qb?sJ^~w4|iP
+z|7xt9Vq#iBK|xumkYoS=00DGTPE!Ct=GbNc007WQL_t(IjpdR(4#F@DMty?zIK2Qr
+zTf4+-m`FD|Af+2zwF808MS{?+p=J8a1S8_x@?y(T{D^)(d4JO96gT?baCKFH4J*(y
+z8wB}fYkDjg+S(mDC}`(EOJ2;N0dQYykOjLgJOCQ`{BUaQ=v)s|C}R<}2<(no@MW?J
+z23shIl%y&ssDc;z>m;@O$scV4#ih|oMP4eUvdCN^7(JJ2ldbnP{_-&EaRhLifrp;7
+zcmu+xeT#nN!7DZn1)_9zyVwB;R>HT!$h$BT>gdBf0l%PW!o2DH#{d8T07*qoM6N<$
+Ef;xJT`~Uy|
+
+diff --git a/graphics/pokemon/torchic/normal.pal b/graphics/pokemon/torchic/normal.pal
+index 373cb59..d363db4 100644
+--- a/graphics/pokemon/torchic/normal.pal
++++ b/graphics/pokemon/torchic/normal.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-49 164 82
+-255 222 148
+-213 189 148
+-180 148 123
+-123 115 123
+-255 213 98
+-255 197 82
+-213 156 57
+-139 123 90
+-156 205 255
+-255 255 255
+-255 164 57
+-255 106 57
+-213 90 57
+-90 57 49
+-16 16 16
++0 0 0
++59 35 48
++126 64 72
++221 100 65
++255 199 110
++255 252 238
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/torchic/shiny.pal b/graphics/pokemon/torchic/shiny.pal
+index 368d184..93b9bbb 100644
+--- a/graphics/pokemon/torchic/shiny.pal
++++ b/graphics/pokemon/torchic/shiny.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-49 164 82
+-222 180 131
+-172 123 90
+-123 90 74
+-123 115 123
+-255 164 57
+-238 90 41
+-189 57 24
+-123 90 74
+-156 205 255
+-255 255 255
+-255 238 172
+-255 222 115
+-230 164 74
+-90 57 49
+-16 16 16
++0 0 0
++48 36 61
++84 84 133
++148 128 205
++219 191 245
++255 252 238
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/treecko/anim_front.png b/graphics/pokemon/treecko/anim_front.png
+index ce98864ea08787fcfc46a0d26daa3788a69d567e..d3d46d5441f65b1c87db7558a0ffffe7b64e3459 100644
+GIT binary patch
+delta 582
+zcmaFC{)A<MW<3J~gRF_Vd5T@(TK_#)lK=mI4-~-zX0{kgFfcH__jGX#shIP2s&C&N
+z1pzntZ*PLnFuI-i?V<bg-=&xZs(ud&n2Q-_>-^BZv-h;pr4u<h!RO;^9T-2z&pz3|
+zvgVX&PJM5~#^i|ln99Ez=QYaKC!T&{@tDKl|2NHT1}w)!Ud{-g+^fT<5X;aIDrs5C
+zyg_NkCE@iBUk)tZc=gbV3u()vcQ6#s-H^7B`K7~Cj*qM>ERXOqadpVe=ys@LF4(et
+zGj9;Hrrl~z)diwKUo6|jUUaiAd0bh#AdT&p(;KcI7YeI;vsiD7meuq6YR!wgxh&zx
+zA-<()->w`BwCQL)a_XTW(_TAouH*)b!+Y#L@f$HIP57j9Zsp%X$+S7Iqs;?Edor0m
+z+))0q_L|5p2AvI(ow5QinSPvPJT1A!Q?=lMmjl}Z-ql}seB69>a=EAp^MYxzKe+Up
+zI?g)@A26?BRp;#xjNL4f79vqx|HX`P3Cn}~OtrcycF)=Cm?EquOzjobczUDh_BxTG
+zt&x*<Udb`u8Scor^tlh$gr(v|cW)+!MC@|Yh>>9s`_?o^dc)Pf)7=xr6Qs{v-4#50
+z`;`-iBtv4SRsJY>(s-No!JpvAR}V+NJ<jlpN83T^O7g;m&Ru)d%NeXK&9)l9(vr5<
+z6ux*-Fu=CR*7@DH{I~o5KHT^B{q6tz{+^z%+PwNf?eF~+55OYoTlc%W>bgkDhy4Mi
+N4o_D<mvv4FO#loc0&D;P
+
+delta 973
+zcmV;;12X*N1n38lDSvxvod4B(|HV?~oJvZ)ga2w$)lxa6N--EgIZBIK|NsBJ|8tzx
+zN^`6+Qer6(5D);o%IW|B00DGTPE!Ct=GbNc00U-8L_t(oh3%F<Zxb;Tz)wOH2I~6^
+zbnn96?FKS2rF;UeQ^%$gh%p%;ONZVR!Pm$E5^J8_fq|j%rGGHcA@MmasJ)82GtZYc
+zC^_4$)By?gO;P;Q`T6<J?|I%`7=kG0=#e*psRI~)@($s^0SrO)fjMRXDEr`;1A%c2
+zaAXBmXMjD43Bd3gfDM4ABP$?)0VJo=kpl(x{$$+>Y#>12eOtG#a{~ZAKXw35D&WKc
+z3;^ib>4piweSh@4dwmV8aT73Rcn($(fG-<d!`{-l5Kv4#AIE|6s!)D>v;dS7G4%*#
+zjB}v@RW9xs=>x@?b4Xqt>lFN0Bnz1km;hGT=Rd+wf4~R97Y~lgahFn0wZiSGm&!cl
+zB3W9e&M!@6_)?Y}e{;3GSXB=3@8ghj9H-KB`Vrwf;eYlJn6h0CC0;bQxpdr&2hHa5
+z#C3C45HN1VRqQmIo3pKO0ro?C17Nq=+;svgyR9v5KlZrHFvL1^qONTvek<fj6a~Rk
+zOD%m_@KF@)1wqg?1E~@SRK)aQW&*MzxtI~pel_ZuNSPHZi!`yfcM<K^fMS%rWnB$K
+zjmCb|Gk*Yn7qW}$6Hy%?3ah9f>sAED5|B>x^CLmFuZYDY$wxemBfMi&wcDzL<4emV
+z0~+HLIY5kOQYlp{L(V`>Nqk6cPpPl)F5n$w&IjL9zUxfh#s3u~b&lT3{@OWC`=fK*
+z_7?|G{<VMYDM#lpDA3(Ax%>TECg>cL3WEypRexLupaKSvptF86!&8@2sO<l}#OufS
+zu$F{hB5-McCKAJwPGD~TM|8vu3!TjEPk3UwpJHx*0*PVVBXj#(c8vVIw0~*aup*w>
+zKecU`q)gkN=eGUQ)l7vLS-UlogAC6x1#3en(=)Wcu(x}uIt#ZHHx{7^UxwjJ;gFX9
+zwSN^B+~H<Y>}a`L$35@7c@1!U1G)cu`(rqP`<vlS>>s_h0+s#SQKM}IwEa71ZW~eA
+zUju<<7I|rZbicWtB0(UVbq7WO?f-^r`v*Z|+OAJSING18S^LlndNqQeyA`e4gGQs#
+ziE4SQB7pYq&RP%ypf9a}QM((N+5=o9;6`D|foE-H1PJBWj$?Z~!u|pC=q<NWWBLIq
+vAjX!rY6X@vU{rcl|8P{VkdC|l;db!{@5<cSSSY`400000NkvXXu0mjf;zG}1
+
+diff --git a/graphics/pokemon/treecko/back.png b/graphics/pokemon/treecko/back.png
+index 89e53390dc8d023027e713a5c257da2bc6fdb977..a30831b71902f994f34a26465bc2d9f6d6402836 100644
+GIT binary patch
+delta 562
+zcmeyva)D)nW<3J~gRF_Vd5T@(TK_#)lK=mI4-~-zX0{kgFfcIQ_H=O!shIP2ieukx
+z10GlT$2X_H;p}<CEpg&+zrX=?k7DMJOlG?$q+Fgg^J|Wl!iGiv|9D<p^nktn%JH>-
+zuLf?54|jN@_4>}Tdil36vzDGdmYeon`@olUUi*}aVqU@9Una~tQOnlB$WXDwrEDKV
+z#R8A$kAfdWBlxy0FDSKGRlLlAAz1&$#6z4%+`2w~^LOZ9`1z;;<36Tf;|_g>ZOPl@
+zXP<HSu~~g0&nD*|QOPOIpOYCk+8*Z#N`3H0K$THGa(m!ezBWNV3DtV%Nnf_<%<7DO
+z-qSQ=hG5=H9&?A@rp%UPsXQYFB^I|ILJCqV;uu5k99Z7Tv`EjWMS<nimJbUWj!am>
+zv5tlN!vV+hVW;I^GaeA)GmqjAaWH*i!F`!&)BSWw*|x%L$9=3b>@9U_FU3t|{9qT^
+z9&rEo1?Gb3J2DFQO_!PVwaihwUZ8PTuJ(a#Qa}EjbY!}{Yo3zH0a@J_n_pgC@GaeX
+zOJjh~e2JFlYrh7^p79bC)%Yruyk2_s(@no$+iVGa9;(0hUD@)4S!=5Qm$FyP?JaH(
+z&z;2cVVB5?mpd!p|K81Z`~LEKGEctq?D6`X^#AtPc~9=u{gD17d#&NY-Sw@^ds|kd
+xYwuvVk^4^d1jC}We(F`Mm%94OPyA>6!_4+-{m;2uXPyD21W#8#mvv4FO#t8@{{sL3
+
+delta 606
+zcmV-k0-^oT1pEY$DSvxvod4B(|HV?~oJvZ)ga2w$)lxa6N--EgIZBIK|NsBJ|8tzx
+zN^`6+Qer6(5D);o%IW|B00DGTPE!Ct=GbNc00H_*L_t(YiRF{AZrd;rKsk1)*&k>E
+zyKATJZ59pb2c%s)xnnzJ?$Ch-`~l+B4{_2Vfr9`!$wikg6n|}W=p@q`Ja|yW-jTKp
+zJE9C^Ob@mJ^F7@ij}&A7XV_T_>=?%3vc<?pMF&RT!-9fI33sD#3I$0CF!~W}0U%KT
+zkcI?~3^^n%8Jqy2CZ0MWF)GwV4uBv1!su4vXZN^8z)k$_9))_Sg=YtZ<D;;Ean(I}
+z9;o4k>)y%Bz<)lyko4ZDz_7gluX-vl?6q+H8ekt8*Hs5Lq4qexOAT|UNueQiqpY~8
+z1xVGb7S7C{nR}|--mMbmQ!J4YAD_MZ<O}B8bFXp|*xw8%dDHKELFbdY#07vCFwXn^
+z!YwM$Mco4c+1v}ZUfjF^Jjo#~)+x?i0cPpw>WNys?SI-9jHB@jO|!7n?|gf6O8TE#
+zDl%n@O1b?`Y*7oma&tCzo@wjHku0{@E4WBaX3Ar`e;(A<hBskKV&|H806Rrf`b7wD
+zb~8RGe15pV^Fx9g(fC7)a63fdeOS1aa@Z;iq>S4HhJu9g#{d;VAeY0N=3Q8#v5<pd
+z)+BHdMORTQu!P8_vxdjNA{Y20<?5aw7+Xce@%vWFD$~0HkG?!1L>v>uc<XkBWpuhc
+s6>`nxH@y41!XS#}GFq*9gYX#QANta=6IrYOMgRZ+07*qoM6N<$f*cMa5&!@I
+
+diff --git a/graphics/pokemon/treecko/front.png b/graphics/pokemon/treecko/front.png
+index 7cacddaae8641947a4288efd93ed51a2b0fc3f5f..429ca5a917aab8fb2e959841c06fd0036027c6a2 100644
+GIT binary patch
+delta 548
+zcmey(a)@PuW<3J~gRF_Vd5T@(TK_#)lK=mI4-~-zX0{kgFfcHl^>lFzshIP2iubxZ
+z3IeYD-)1jA!8A|cvxn~2e@k-~sD?e*z<i^@m+cQ%`FUeb;oDa}u8j_0_+K#N*Nt1t
+z?;QSioJ(SN+tIDp>(_rflN8J!ZFYQWc*Eatjmj3qP0KW%|1-JTQO@v`jlpK>#BP2D
+zf0oN>pJY!kR`6_#ju1We%7@!L;XSvRj?aQQD`X7!GupQAaCKm`WT+O_kY_mev8-3g
+zG~m<f*#S&Z3!elOXEg4Nbg+ysXU|Ga$a4ugFum_~b%^$jl@m<1tgNr7OmA-z<mQYz
+zzr^TOhTIXShbJWsm^Rx-b0s(IIsC8YihK&I%YrMRcTWF!9F}(P_id94qCJvKA3P+V
+z1xj-TGuX(uePVH0#*kRtuz!)+N*2Eu?h{Nsn~wEF+q>JdUU%HgkafH9{SUQ{7OgFe
+zf7;%^NMW#CTs`gB8m{a<OS6XhAcjNk3GZ5;T>qz#!%)W*dNZQ&TAy--%F=+{XM@hH
+zO>aMWg;jOi%+(qWe{!DGZF;=w!E(2pm^cQTm5SFHW&ZxTs<no_?`X_>>(Ywo{)%-g
+zer;NN*xz0EPF2He|Ne6R@a^-JUs$hUY`w9*wNX#=)l46TvSOK6DPLmEE{P>A(w1G2
+f_N1=;kNko78=t1lJ~hF?85H-Pu6{1-oD!M<WuWhG
+
+delta 605
+zcmV-j0;2uG1p5S#DSvxvod4B(|HV?~oJvZ)ga2w$)lxa6N--EgIZBIK|NsBJ|8tzx
+zN^`6+Qer6(5D);o%IW|B00DGTPE!Ct=GbNc00H?)L_t(YiS5)ekJB&|0ANc<2g}93
+zf!l9k@0Nj1Oo3lOm^xlN!Q5NO(&0Rvj=#|eB-TEgf${3JEPve4IL@6IQYndfNp(Zg
+z*sz1As{Rze_xzp-`M(C1XPmoRl0xnPyD#JxzB#}e%o2p-1b})8jx!MKVt}m`oF0HZ
+zh!kM`2Ow6!vyBxf5CF-8cErFze7Zlkf)N6K^W)r_=Li74K6ii@Ex31p6#zeb7!3iu
+zM?#(~8*nCvz<*9)ADkk9?<3h@((4NaRZb}G1D9=~XuR!!I#oIGxDZmR2AH~gXWkMx
+zo?Jrm;jRgR#wzJV;z0^nVJd%yVe<hBN_HE^lz2-SG1G98lT4SHR7o$-CcZ4w;d@<6
+z{4GsCSyQj^@4HY++~<0z`;o|taIywrY{OyH+h8KKV}CN92Em)eH902;2Cw3AT?E1F
+z!&SI|y=ngf%z|L%1ShlUJ85rwOfw9z4wo#lWkRQ+Oc?Y1mzG*mUC9k&3*YynVUQVx
+zpcVPEVh9vfvOkDdzsARrXkApIV2xNT_U!5iRGZ?Xh#J7g<12PO0B8iozWoF{2A;tx
+z8YrSx;8yB^ENz}24SN14x<PuMu^TryW8BQ=<`VaNX?iOj;}Io5j6G?LIVwXbK<8e3
+r%WY37H8=}6W5W616GL4+`46w(jWcP_JUOu?00000NkvXXu0mjfs>2p6
+
+diff --git a/graphics/pokemon/treecko/icon.png b/graphics/pokemon/treecko/icon.png
+index f51358adfe3dca7f1bfcc77d2e1a57e339f57ca3..bace48d30a1b05ab98888ee5c69c754777f3c6b8 100644
+GIT binary patch
+delta 305
+zcmcb`bdhO-W<3J~gRF_Vd5T@(TK_#)lK=mI4-~-zX0{kg0HyDEx;TbZ%y~P>I*-|q
+z$3_0>7RMt$7{b0W-K%+5&&<rd<Xn`vfy#lcuHxQndqq|TRcU1!$Yip$>{oDLP|*vo
+zEo}PEvFWcwLH(h9`$dG-ma+Ei+0`#Rn?ol25ew5>KSM*Ob=ryQW+u`9nYaQNDwqOT
+z&s-A>)mFIW>uOogcU4$tnev;p9n~7?4OS+r=cTeNYy5D{UCqAbMJ>a07v=J!pJTHb
+zxn%M-vbZRRcpmUqW!TNNk@4(&-rY=v%Veu}OfXVBd(HanlOU~N58Jg{Z*JHVQq{ct
+hf4$AMha36!7qEVGZ%J<J-(CR<2v1i(mvv4FO#r=%Zx8?g
+
+delta 314
+zcmV-A0mc5&0@?zQDSu*|gL89py}iBv|NncON}SC~l=e#QbDZ{+_PwN9_U0+}_N>*_
+zYUWBQVq#iBK|yIbeOmwk00DGTPE!Ct=GbNc007uYL_t(Ijop$xZo@DPMm=P<F7;{Y
+z5H8Y^!M<Gg93_iaAsXB<f(LpjYA_B0MEY`o0xdT_@DJeYx_>_w<`&9bTt@;3p20ds
+zP>%|%1uj5-2*mjD-2#ije=co-Dum9G1feaqO%U3%C4nDvos!aIejNy?wddawX5jeB
+z`?;V1b;ei7b1tQJ^rbZQPc#e+x{|y98g4NL`}^rH2M-3jL4khhph81dz%B%0IG-8d
+z#53eg2e(bi7BfEl$TjaJC6S?jA-97otorc;+W4-wT`7I@!+z6`JE=p0a@8i@r~m)}
+M07*qoM6N<$g4kw}-T(jq
+
+diff --git a/graphics/pokemon/treecko/normal.pal b/graphics/pokemon/treecko/normal.pal
+index 987a3a5..0c1241f 100644
+--- a/graphics/pokemon/treecko/normal.pal
++++ b/graphics/pokemon/treecko/normal.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-123 106 156
+-255 213 123
+-255 197 82
+-230 156 74
+-74 189 131
+-255 106 82
+-213 82 57
+-164 74 49
+-24 65 57
+-74 139 90
+-255 255 255
+-189 255 115
+-156 213 74
+-115 172 49
+-82 98 41
+-16 16 16
++0 0 0
++29 52 39
++55 100 62
++113 173 79
++188 212 99
++255 255 239
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/treecko/shiny.pal b/graphics/pokemon/treecko/shiny.pal
+index da5dda0..5d35b75 100644
+--- a/graphics/pokemon/treecko/shiny.pal
++++ b/graphics/pokemon/treecko/shiny.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-123 106 156
+-255 213 123
+-255 197 82
+-230 156 74
+-255 106 82
+-255 238 197
+-238 189 156
+-205 156 123
+-156 65 41
+-213 82 57
+-255 255 255
+-172 230 238
+-148 205 213
+-74 164 148
+-82 139 131
+-16 16 16
++0 0 0
++50 47 37
++106 88 53
++177 147 71
++238 214 122
++255 255 239
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/wurmple/anim_front.png b/graphics/pokemon/wurmple/anim_front.png
+index c79458bffc9a2060648e2bb5b92b2f604b611c04..f4dce8d4ec1a6a842710a611f2c34dc466433aaf 100644
+GIT binary patch
+delta 418
+zcmeyxc9403W<3J~gN~YNo~h~DbcctVQ-6Qi1r)&pnz`*~F)%Rtc)B=-RLprh)iICB
+zkjHiY!rNTW*+lp*c-{HWvEmhD*A9o&!}AKoPo7Z;zES4<FU{!W<^Ehtqmt6UtC#%r
+zcKG3}Fg3r~qd2Z!Cd+BnXOZf>c&`eJMF|J8)Gn9uzb<#)@~Ku*T&wKBgm4|sS6P+y
+zB?33s7<RnoQ$H)Fyx^7m#Ob>ku4XVQhV^XB-^*3E>(KqATisfFnSA;pp9SAsCJ}b^
+zr<mfx+*!RYijj{myjWwovE5-Ur-YN+Z^wqOj!W3|0v27`&DS?Cww@tnRd}`Q2>}%W
+z-g6AwlbKmwob>ekcsZ86{NZomN6%eOrS>-L3=o``V{z!ttZoy|NlcR*Y-c}P;QdW{
+z<?bkvZn2JCtM$F|Zc2I_yObEnet=iON8ykEX~wRfpPrsA)zIs9I<FfZW3*VHd!ETZ
+zo7d~stxFG||Bv^=@_Nhnm-jPB*ZwNE?XP3}H090Q=p7E>ppf@;^>bP0l+XkK*?zDf
+
+delta 862
+zcmV-k1EKuE1NsJ#DSySq#bQ!Yw4|K>|NrLI?#)tK_IqOXy^H46?%vg;|NqsLlmPbj
+z0L8^x0000O7#NQb+Rgv~00DGTPE!Ct=GbNc00Q_)L_t(oh3%HHY8ycihIa#U3K8s;
+zd=gSDgpRn78$;w5kgeW1!<;b*7!|iEg9Fi#$2ftCb!X#7+kZr<Ef=nJf+&zmxpy!m
+zF6>5`l?Z`&Rw~jtn&yi6xPNAM?*3tH8IL<)L4Kw6Y7wyZkHFyqAQiTPIq5Nb8p<Zv
+z-_h^oLm9x09k>o#QkLx!{Wy<+T_JTf^re_nLjD8DAa*<}kdsoriAO&DiXLOGl<tNY
+z`AsUF9x%4mu77F-;P_!aJwV`z?&>K(6u}4SA>;Z~>vmG1+TihJ+~cQPTAw8j*=PSb
+z0;-^t5}T9++ZbMrS-}9R<5Oo@N=jqKGpb!sn;?nX;z`L_V_amE0;)~MzX3|G7zv;+
+z!vSA5bJzw-kO26BFMR`afI4ahfXG1xPfCzo@Bkoy?0-wwt<=CLy2u570A6iZ>uB$m
+z>LLdQ5e3~<+qcxva?f*efj2!#da4g1*K+{Rscjj#^%r#)j+79Y4pjnUB3s|7Mpcxk
+zSiYO`kDYRM7bR-8v0t66?$jrfpL_N%kCkr>XU{KV8UJyl7FZ`cJXrv|CI4c7VkMmC
+z@0W`ffPX$q&A0D<?=U=>1Ek~6=+1K_((xb+=b7{C_&Su*5w?6P#Gk&D7DvFy<NKwM
+z9{ner0xjd-_6@?AGrG4`fp=Y{jC<P_fGzaiuFc*}6w$nG_CAfmIRfXjd(VIfC8DqP
+z9fU_}>fZJxMHEzIJjV)f4-wTNd@=bldmb5$O@E@z{^jiX5%X<;cYmeRy>vVy-giw2
+z58C9z-qn=g2UGKY*u}=+Su$#_vEnDKyKTbV`S)>>lb*QPchP&PtLP^pz+o!iDYtS9
+zM4LPr0Z8ysp?F5xe+hRKL<~@;mly|EkY+|{744G~XZ8bGJj01n6Y{Qd;5o;7SG%qN
+za#x`g&;d0mVhP$I0e&P@ba9F$G{_Z&v20b`H||Uc7GS+z+n(Ss2(WxMLNv-^f(q7&
+o<Yq76_l@$L{oyyZj7J&20FEXx$9+p1R{#J207*qoM6N<$g5s;5F8}}l
+
+diff --git a/graphics/pokemon/wurmple/back.png b/graphics/pokemon/wurmple/back.png
+index d6ef56dcdf353a43068b47ccc366ce31c5da02dd..5f137b7ea15c785d9dcf276be2f8f1eb584e04d1 100644
+GIT binary patch
+delta 393
+zcmaFCyn=axW<3J~gN~YNo~h~DbcctVQ-6Qi1r)&pnz`*~F)%P1d%8G=RLprh*)fmF
+zkjHiY!rNTG*+lp*c-{HW5qgzbq_FW+TkY}Kl(b1a8{RH@l&?0~=I@Pb{5D@M%=g-5
+z&usLL$*j)WW!LBWiwjkkSZ=@b`SZ$@6a_B6HCma|ZP&!hUOe_aGit>TM)!Gz!X{Tv
+z|9hgaDf01z>9UQX-JAiv+jUOIHf4Qln4rDv*7l1c_VI%HmhV$9-{Uyb=PLL4#xtp~
+zvp>ZSUf6fmZ&AWM%Mz>1%r|-$ve??DoUGH(o+xH<IAZF(5{@q-ObYd%_x#chYCGa!
+zVtJQA=!?V*&B8q|1r%#)9qQya8eQ{Q(R_;M^F!Gz6Y<<hGnkSV1p0ViO#UvN8LZot
+z&Yv>-)#f0jXvX4ceBG7|4;fxENrq2k7U_R_dUdfxtXT89iPEuLizjsZScRYewXl9g
+ZyyK1%f9<%U_n`3gboFyt=fsrI1OOpxq8$JL
+
+delta 457
+zcmV;)0XF`q1Ly;gDSySq#bQ!Yw4|K>|NrLI?#)tK_IqOXy^H46?%vg;|NqsLlmPbj
+z0L8^x0000O7#NQb+Rgv~00DGTPE!Ct=GbNc00Cx6L_t(YiS3j<Zo)tig}nup71=Jl
+z5(-voZi9<i3854&cCL_fq@>~qp+bt}6s}nc*I?xeY20UH*nb~~!S1M-hGIUwnR$Lo
+z5IpMM1ta~*+hQ1C7>@u@i~;!=0K+pTV*mgYgG34-{?-h)w*f%?Thc(1=st)fC>1$}
+zVbKw|QU_8YLX^;Hs3W~WE6xC5O#=~_k~F|t1Kcp26{erkZgB(5Dq4bHu2_}(9o3(h
+zGxK`JsTl&L0e`Y76&#L2Sm1*Iv`=ynus-EYLjr;EY4vsd+)zMjB(i!<I%R=;y8a>h
+z%zmr+dU(Qez8Mx+zPP>@EtiI++c4aF3Abs0cMFtzFX0iF|AD7dtTpTsh(;p0{7r;v
+zTRMO{0P`SOF#SNP(0d}>_I0`w%sIxYnjPFlZb{KGC_<lAb@E<-yYnmpP#&`8+q0^@
+z0-CJxJx!rsIv0I_T>*7(!j%HN*3bhUb%*)|IjF~o;by$r00000NkvXXu0mjfGMLi2
+
+diff --git a/graphics/pokemon/wurmple/front.png b/graphics/pokemon/wurmple/front.png
+index 86d8bc06a3f8748e779590bcf0f9ca9eb39fa439..fa6614ed230b7a1a57edaa0c1be781445623387a 100644
+GIT binary patch
+delta 397
+zcmeBTS;IU*vz~#0K}StB&(w5ny2HcGslUJM0*c@P&D{307#JAMJzX3_D(1YM?3>4A
+z$kS?Xd^hZd`GSImut)#g9YXm7j<9M;f9u(O;*Sb*&h8Zzvrnqbk9(ueKCkMPzv|if
+zjFS9}())Oo&i<@_5Fi{hH~QU<I!#H*jwa^SGq;@P+g0wq<x{PsxYoYo6T|PY@P6H7
+zZ`HBJTISOx)eSe3SVA5vpDvocV3w}Jldg^5d_#`<haZXdtB%}i&M-N7;&GANA%|C4
+z-B*yfwe6;d$QkK&H+9`!Tb3+ehxtagzB83nPn5Da95D4>DaRKPrh0|oxVNI3wMh!I
+z<}j>lXY;s_oUrW3$92vvAO3RwEI#73W~KrARLN(58J}H@+2WbR)zRo?sO!pqcm2|N
+zS%Egu3a?k%X{V;7ADFZBuoAn1j6$r!<FqFXN0WbkdM3j*-Sxuf6TEt@fhUgoSec*y
+dwX%LiycBbpzsLK<6`(NobY=5%S?83{1OPO#ptAq~
+
+delta 491
+zcmV<H0TlkM1BwKYDSySq#bQ!Yw4|K>|NrLI?#)tK_IqOXy^H46?%vg;|NqsLlmPbj
+z0L8^x0000O7#NQb+Rgv~00DGTPE!Ct=GbNc00D?eL_t(YiS3iIP69y?hG$K{f&v!2
+zBSZ+{A_X=k!V3T|;E~K46B9$R`v$^uKti#0mTW~Y6xJLCg?|;{9Y~ZK_h_Ak!b-!m
+z^JV|}|Ct3i)&DL$(ogp8jsclp0{2INM878wv{!K6S6y_!F`eZ5O5(;1y!U%bmE984
+zC~pC`LSnWMiXRvu|BOmTUg!jTrPO1z6!a4lfIz9B$d{r^wNrC|>tW4U0H1#LQ*#TP
+znX%ae#1L$rT7LjDFUAbl70L#S-l7S6xi;o??U6pGmln_ktu?Pw5>Q;sR#1omJrY!w
+zrFCfqEUSkFT}4G~i>*su1{lw3jg(DbA84hMu>{h~@KC6(Z*5o!5<nq^5-~7BDr!Kq
+zNGEHP;-m{E5hdnsgP>AJLAdaxkQmlm#thn9%7u?H!ek3(tZ%l|(Xue~d>QVOq_4U&
+z2tp5SPD97ZU0gK-e9)X{N7M)aJlAa01~n^Dar~R|XQP~JS&6#q?9;n+qq*CCwcS4t
+h%A1&T_fPew>l=l{i-H63z&ro|002ovPDHLkV1mVe<5vIx
+
+diff --git a/graphics/pokemon/wurmple/icon.png b/graphics/pokemon/wurmple/icon.png
+index 52b46b4901e5bcbc1feeda066b6b3517c1f3d433..3b988eaa88f0246af47a7a4ce02bd13ea0db98d4 100644
+GIT binary patch
+delta 232
+zcmX@j)X6kKvz~#0K}StB&(w5ny2HcGslUJM0*c@P&D{30fYMVuT^vIy=DeMBkoQmk
+zkMn%N^jRH@D~@oyv3I(;z)8m;h)qG}AG?(k|BsZ&K2h(sT<5&GZy5_BHS3z>-PP3R
+zI5Zq9K5$k}CGibIwOE0Zr?3_GpUH+|4LzrxMI^JoNLw(y@T1z5L_^*KS7cXKO0N6f
+zlCe<K?(viF!K|B3=?GofmAG}vs&t9azX@068$Y@quIH1UeOQ|3N%UgT7Ef!C`#oL#
+KT-G@yGywn?bW+^_
+
+delta 299
+zcmV+`0o4A90?PuBDSu*|gM))}y}iBv|Np(DLH713)nY;RlqrjQ|6)qb?sJ^~w4|iP
+z|7xt9Vq#iBK|xumkYoS=00DGTPE!Ct=GbNc007BJL_t(IjqQ@L3c@fDhVKas^bMq&
+zgG+IB(l@9}mp+}#6_ULHpQTcq3ZWobEHox5T+%KD!A1PH`+xZF2;>9!y_m(!WWNFi
+zDP{*oSqor5EqxhKfHoyv$X|#?p8_ygU?(56GU8QZRdYJ}Ob;3nc@scZSkMw+X|}Zm
+z6+J{HJ01!)ZL)8p0>DPiXPf2x&q_WMrf1=R6NZ&K62|$Fp9y$jx*Pd22~%N1zzc&I
+xK5r6+A0yy|Q6yo-3lkOWL+;j(CIa8~;|=7DbeRG%#q9t9002ovPDHLkV1oXPfp`D_
+
+diff --git a/graphics/pokemon/wurmple/normal.pal b/graphics/pokemon/wurmple/normal.pal
+index 2fe1fd1..005457b 100644
+--- a/graphics/pokemon/wurmple/normal.pal
++++ b/graphics/pokemon/wurmple/normal.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-197 197 197
+-98 82 82
+-180 164 156
+-255 255 255
+-230 213 238
+-205 82 90
+-246 123 98
+-246 189 139
+-230 213 238
+-222 213 164
+-255 255 213
+-148 148 0
+-246 246 0
+-197 197 90
+-0 0 0
+-24 24 24
++0 0 0
++44 38 37
++110 53 53
++173 103 64
++225 179 101
++251 244 186
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/wurmple/shiny.pal b/graphics/pokemon/wurmple/shiny.pal
+index 3217ddc..de228d9 100644
+--- a/graphics/pokemon/wurmple/shiny.pal
++++ b/graphics/pokemon/wurmple/shiny.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-197 197 197
+-98 82 82
+-180 164 156
+-255 255 255
+-230 213 238
+-164 82 139
+-189 131 164
+-222 164 197
+-230 213 238
+-222 213 164
+-255 255 213
+-148 148 0
+-246 246 0
+-197 197 90
+-0 0 0
+-24 24 24
++0 0 0
++44 38 37
++53 53 110
++64 103 173
++101 179 225
++186 244 251
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/zigzagoon/anim_front.png b/graphics/pokemon/zigzagoon/anim_front.png
+index ba726a26606daa3196c54d619fffb76468dda29b..9626d95ebb2a5bb36893dbbfc241b0c7d75b5044 100644
+GIT binary patch
+delta 424
+zcmcb^b)0#EW<3J~gOa*&U5NSWg%jT1+4TSaYoG`okUg*M83O}jkf)1dNX4ADQx8r&
+ztiZz%{^TFKtU=zvztanJQ(h>T2$b+EH24}--tm!Zw==t@#OWEa;mPJlF}23UwmZTb
+zHoU(f-f%Z@`tyeRFWoC!x$kJ&r8ThXbwo6*e=aviXt~%v`6b1{4m+-!zfRLzmErQZ
+zV#y}n8$TVB<prm_xmWa|K-xL)BzwThUu+gP7}g!NWk0ZSDZ{a1S;pX<x~vMU472t{
+z6-09-IWG3pJ&@+e<EW!x=D0TaeN%|tyib!DU&~8zOIR`;7PH^TP@hrhcE*g^$8y%A
+zgYz3CK1eb4vU%KUaNpU>zrC2{YSXesr+x`Y2k@zE>wa@<>LRw4JG&z9Pfv<^w@&DC
+zo8*`0(_U9I@`<}YzEK%F;bsKOA{*9cpEw<Ux78eXn%=%E_|B6@PtG4G$Xu{ADrf&$
+zxfMANw$7<n@t*c);hLBGm(?fuD*iY9`}^pue;bzlub&V<^Vp)|^Ot7;1DJuq)78&q
+Iol`;+0JNvLZ~y=R
+
+delta 1348
+zcmV-K1-tsk1KbLbDSw>3gGxautb1C`oO|xQod52{K{+vMT1v&Ni{{m=|NsA_AOOud
+zAf%Lgds<2m004VEemwvH00DGTPE!Ct=GbNc00i1eL_t(oh3%HVZz4w&$A?4#H!&>c
+zWN3_-jaaAQ1ak`ANfxWPi{z6w*i{rxS&CQ}yaex3SjdINY=03WSL_r~{tGwPr-|E3
+z?7~vOj-86bj&esDHt(_gvLQ(sMe!>@@V@h%H^YzbhmeQ*uUFuo1l1BDd!@fI5GD!m
+z(45Y2(fi`8bh<ygF0_yz?jY=QaWroDNNBKjDRi*8Lx@GlnSh#%a4D^kK%Ph}s~K5h
+zX)pp-C}0i^E`L*Lvaq?3FF(z*tfl2iP&ic~md}PJk&8@%RI~$4`t^ckg{UtFY-1HY
+zzV#d;ERzUSG;L$;u)~;XYT9z0Dk!LXf<>98mVUX2Mm~wGGn28((XBzz!RZcXp!Axp
+zFzHfNud7X#-8!O_TF`HdP7zM2IhkFnsu~kbRuyp&n14T6ygL%CJW*A~K2X(lTa;nS
+zeFGF!`9_k4f_IpjW0|j2wG|TvGq<#Q7&o!uDm+1%VWCaBiSF9w4m{b8_-^R%+%!?6
+zvP7(o?o~~Msp8n9A^e}}x?VIGQzTnBCRJ>)4?ZRzeVqQcAb3`k6(fqbW56xn;*{3t
+z3*mpG>wkq>(#X(+<2ZF{iz6IT;UkNdxvLl4WLc&(W^+Ta97h@$xUP58PjXDrGdeg(
+z+~J2*u{aMawP71>`XimOtX_mg3C<7OXkK^S@il^=_8ZHXgWHQ9!jm#}$%AUU7Yv%P
+zRN}mj{o38{>I>)=XmYRv&IqczzX*S!oxGwbi+^&H(iX_-cP;!^$<B-64yjZMWcPnl
+z?u$-`CK5Za_O{(_HM-<})%vaY<G1HgiO2h|`~BB50_*&=5f8lDZ@5yt-|5T|fO*%_
+zwjAz4zcaf<)!~iWrlyGo=|!bkgFxPf%lVya%`Wk|b7l<Q<Ui|@V5K%_&Gzx2_-=4s
+z=YOFd>Y@I{niu2KwHWf<m)rpeX>l!bUr?QX5s9o_dV=xaUqDP-L~@LVrs)9rz?>Ga
+z42A#BrSyOfJcDMF1jd?oW!hpT2|~G?_1=b5Y6h$^g7_$ex}|9elVt-H*d_?k)vP+>
+z!F?Sy_w+!LB1<e=6(F#nEv69#GBw>|l7G5{bWmRot~L#O8d1s&vpXG8B?$tyvSBEO
+zGHu{5mRXKr`d@-aRzo^Kz8D|k3%v+ff$6WV%d9%Whl%2=U0pW^>7T2}KnIwrW_6;V
+zH4s2D!l26)nVDigd}j}zx(<S8CWCxUYX;K61}Z+}!(jD&{G35_D>5>~BTUZ<;(vo;
+zje>Wv=rRSPTakC9M~(sJ8=zX{d<ZE1$9=|jF}lqd-Y~7=lqR=rF;ujv%y#vnEK?MS
+zrZ^hFgCj-=Q=pX5U4sHXAbc4E2c(Blz84A*%wEL=&S0U1Ir*^t{^T*m=%$iw*Kx6X
+z3ji|(tp2N)g`|$r?KmDCG+aLB6Mv}f?H`W6#9b1$M+blpZjVnOV*BLe<uUf75boGV
+zd<eR|G3)tHPQC|&goOBjbl~Ab(47q7odOLgO<6PeK*$?Zga-iP@xy&V@W;>Nu*F~V
+zL-72x2K?{}PKW&9&W3Xj$SJ<33HJv1VK)6iz#G9mZL37wxqLxP;0MyvG(9+9Z)N4@
+zS-~GRFOl~+3Vgl8Iec)F-$Z_>3?RXs?E^o!qlbt3U)P@uC?j{!1b)8&0000<MNUMn
+GLSTaTqmw}Z
+
+diff --git a/graphics/pokemon/zigzagoon/back.png b/graphics/pokemon/zigzagoon/back.png
+index cc56c5d6773178aaf3e15e53c7f94257c815d5e8..202eda68296bc09d7d7dcb84ec5cb656192b47be 100644
+GIT binary patch
+delta 397
+zcmZ3@x`ugzW<3J~gOa*&U5NSWg%jT1+4TSaYoG`okUg*M83O~Oxu=U`NX4ADQw~l%
+ztia<s|HfYZk^?(fzsDciHeq4&ibmIJ2BsSplcV)69=-AZqo9X`-N$<z3w!TGwSV9d
+z_$K?G<%9K`BHj}}>Nl1A(6XEE5a?oa;QLpugBO+_KHtof$jMQk`{Zy|r`WO?=b~3#
+zZkQYIbG&E4ymxz5_`h2|t^2{C=KJ2Ef%ie!^ydsL+vXf_%`<)=wf!l}6BdW-vz>1g
+z3Gpw}`_8hv*<w<KLrq&)Zy{%qwqUzPLqGpfX1~4zCaQWe46FT*=4#g;xVlzS@Db+)
+z7ZX+=*$Hcz`-^tZc=w!VR`XLWQQJ)RS8Yf5XWnfK+M=>HWaEou&1p~Nv^M6<@U-84
+z=LUDd4vS^Q&v`w?j9EkU8cX*uZ`i09Unp^I;n^u0c33<$Hi(sa;jUXZ=NW&9VTIgt
+e`IG9)ez4Eg4X~;x_`e7g#-6ThelF{r5}E*EZm2H+
+
+delta 654
+zcmV;90&)GU1FHp)DSw>3gGxautb1C`oO|xQod52{K{+vMT1v&Ni{{m=|NsA_AOOud
+zAf%Lgds<2m004VEemwvH00DGTPE!Ct=GbNc00JpVL_t(YiS3lJj?+L8hP`RhX6>Ma
+zA{;v|+~s8Np_Hd1euWiDdqrrmtzc1D$VEgtlmcD0;GrnciGRWf<pl^dw9KqI>Fo6#
+z6{5L`WJ~!!&HOtvUdMTe{~YXZfIGNP%^fGb19)nl>3~7vyzS6?7v_}(E(mts1;i$E
+z1}T7d+6g?TS3d#_8^Ax~7+tWy07nZL#uyjOVY52`M!<YHU^9t&&|v{noShBBp7c8{
+zphr2M&pqkM41a;HHn>tI+?Scm&_rr`Kz$ZVAAeB<0lezaC8npC5n!2MJmg%|0G;Bc
+z?ZNXg41vJwl~u!G0FlwDQLD8L^f>r_UIW4E)H+69RNT$|8{qs`YiasQsio0tAp9v>
+z8P-VXJn@XlV0C%<y_KT)pq5&flp&&198Q`p`uZc*(0`efJ`F3#p_w6Zfqz!&g-;10
+zaN7fAWNxI?BIg-pz_o>MjS3^|FuGKWEzJ_9Q}=Le>e!(%nb=XIK?pdxU4Z&0!wnr{
+z7h!g)aob`&<!4G`>^Og7tvxf#5c18Eko|#7w3?85)L~u}e}I<GMoB$nc#J>^;xKLK
+ze6zUOlYch^h>6>9Ky&0-J;pCsp`27-n;ZE^seL)hP#0P!#dcf$Xaa1lmiv-S2%W<i
+zfn#f(MjNF~heZwuysK<oU715rjJL^kOQ%)BONA~L0<J&3Z#p1dU-1-DS|vy(EdVP}
+ogLN91?;ed*_ui5Z@o(ZcHL|(C6+pyD00000Ne4wvM6N<$f}GGV+yDRo
+
+diff --git a/graphics/pokemon/zigzagoon/front.png b/graphics/pokemon/zigzagoon/front.png
+index 442a5c5aa8ff7c1d88305f627048eba2e726adb2..95dcfc9e8215e7baf8176423c067014d76ae6609 100644
+GIT binary patch
+delta 400
+zcmbQsww`%{W<3J~gOa*&U5NSWg%jT1+4TSaYoG`okUg*M83O~Om8XkiNX4ADQw~l%
+ztia<s|HQrUk^?(fzsDciHeq4&1&0fA4Gd-{pG@;E+1M)=?<CZ=zV_Ol{QSJP?Ekq0
+zzRA`yzTn$!!=Cb|K0+(zfnV=NCXpQqix}+BD_1D%iq^?5`R?toW4rm+)dFXA5;N_B
+z?y|l4lbCsiBdauDwQ|Q<&F_zxXPDHp+vG4@mzu}?;ARnv_>OZ8*>|QXPf%vKdtc<w
+zw8a_`MLX4Rh#nDiWxU9<)<2n}DAwlcQU)nGIo3HcjhWsN8Vq6cIqSEtWeD$2W8qL&
+zaBWgOFo}6n>4S@T;*Z|WaSYxN6MIxXnEh3wOZ%C1&e~Cv!gfXcN!FhBR?cdp%#4%u
+zaytvf9uySnoSkg05_v>u!V}F6+x!{K_?}pEIm_Pi``FzbJgxENB?tYjFLwCyhX_{W
+hK9@gvUF|pfR+T`jRne>qfx*nl;OXk;vd$@?2>@wxpmhKM
+
+delta 768
+zcmV+b1ONQ51DyttDSw>3gGxautb1C`oO|xQod52{K{+vMT1v&Ni{{m=|NsA_AOOud
+zAf%Lgds<2m004VEemwvH00DGTPE!Ct=GbNc00NsyL_t(YiS1J{Z__{+y)wjIAaNS0
+z$<oLd6f*@iUqv>gDkpVA0_ku%AqC0Zs@5Uc8Bmm=@_8UprhoVb#IHiMLx&`#WpYCi
+zlqu#eaSClBm=S%8CBOH*@A>%-p<DdxQ2r)p>>>1K?+*stMhZ(TV4|VB{Alm6H9wbF
+zHlhvOJLcUhVhJTCvnz>%%05C4LPuQSSA-LF6DbB#p+v0`a;S(Pkx=Z&;H0pQmMhCf
+z?XdwRhZ-o({eK4Mt4EPZYFN}zogPs2^AJj$yQ_+4J&+#nrVc46YD%5br<?5nz_uw}
+zb+Il5?o@CuhYKs8hUwIk)E3wP_3nj*rGr0;GGKfLYoMMGa@OcUX}gOtb_Cy<eMPcB
+z$~ibAgk*RR8ayim_D6?}W`ea1LICa)vgPrbNZGQ40)OjoRW%aa0aAwID?<7iZh^f`
+z-K1RNi7KXo8c0Z+^`3O6m3{H>eEvRicxl^GLqN;8(!D`>66?M<3lV#6n&yrLpsODD
+zZLE8|C46i)`<<~%A$Ycv)2*~@#}X}H$du0PK*YYAX0@5Oidge~-^Cv9%8)vnS@iAK
+zW;M*$a(@_SJZ9;R@2eAoFq}5MQ3l;Cn!-V4K5Jv$VJxXPBU&{5$OI^vJ7P#<tUZwC
+zZWvzGC<M)~P_!rQrQ716|5ow@gK!9f6r(C*uH>87&+4vVt2jT|ATtWp^&1hZ4)Uj1
+z%F@inxG!Yxb&J?(KG=;m6bc0)yLqR=-5|i4ws|jRF9w5tXM}E|Iqqj4ULL1amK~pu
+z$LDhb=lHObRX(&jp_&~B!2*FWA31c}XQAMO`4tVHb($4Qc?bPStMdkm;fZp-G1?oU
+yrEo#U_!r~F2*vBo2{q5l50!7@i<n#dSNI9qOcoVOPOV@70000<MNUMnLSTZqOlsKx
+
+diff --git a/graphics/pokemon/zigzagoon/icon.png b/graphics/pokemon/zigzagoon/icon.png
+index acd0ecc8c295953ab68e292d79955c01692d960a..722e8fea14241241a2f13b0355cbebe4869834b4 100644
+GIT binary patch
+delta 242
+zcmcc3G?{6FW<3J~gOa*&U5NSWg%jT1+4TSaYoG`okUg*M8Bltjr;B4q#hka3F7h5S
+z;BlGH%zR_6LJE_>@An5-a?L!{GJa%8-}%(bBJ^+5{C6c*CqFziY<Tc)_q&EUJKl<h
+zyOc9XoMEhW$UKq#D14REYMld4DNC;EUVCKoY=_l(g-oNUI7fyw)<$pk5QQbvl}t1y
+zW-{w84+_d>I3duuv7|vGpoX2XbmM~6Q<9_kU(G(WWqlI+><>>r*RwAV7XQ8Y{RbAV
+WdaKJ^SqY^epLn|ZxvX<aXaWEvBwfD%
+
+delta 315
+zcmV-B0mS~30^0(RDSu*|gL`{>y}h*m|NnDy&7`dMw1Zmi#f!zPDfad$_F__$d(Fk9
+z&Alm{Vq#iBK|$$6v|j)K00DGTPE!Ct=GbNc007xZL_t(IjqOq~a>O7E^b1UP<vk-$
+zS~}FB?(|hE(=pE6j3^a6iNUx^pKQ0Ql@Oy{mcI&{nA@F9w0}w!yHHXAcZ(7;ykQ8&
+z2G7d-PX}PA5S%ld0*5eW+WSEq&xW>;sUk<|f|5M~hb?u-F(bdwg%#M!GnKJ;DJ64S
+zCgj)c>+8+%k9!>2dB$PB>yB-oDPJruYKw!HOI;x9PltoH#IR6rAf+0;j%%YS(T_c>
+z9h=zG5bOh$$21$xj1ah_F2Fvge7IvqxaMO+2ssVDtSvD2e3Z2O7GGrMiirxchv5JK
+N002ovPDHLkV1m2xmRkS-
+
+diff --git a/graphics/pokemon/zigzagoon/normal.pal b/graphics/pokemon/zigzagoon/normal.pal
+index 55f6178..69e348d 100644
+--- a/graphics/pokemon/zigzagoon/normal.pal
++++ b/graphics/pokemon/zigzagoon/normal.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-156 189 131
+-74 65 41
+-172 123 90
+-205 156 123
+-238 189 156
+-255 238 197
+-65 57 49
+-106 90 74
+-197 172 139
+-230 213 172
+-255 255 255
+-164 32 0
+-205 57 32
+-164 148 123
+-123 90 74
+-16 0 0
++0 0 0
++34 39 51
++126 84 55
++171 161 144
++237 220 178
++255 255 235
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/graphics/pokemon/zigzagoon/shiny.pal b/graphics/pokemon/zigzagoon/shiny.pal
+index fe2d3cb..d6db3d8 100644
+--- a/graphics/pokemon/zigzagoon/shiny.pal
++++ b/graphics/pokemon/zigzagoon/shiny.pal
+@@ -1,19 +1,19 @@
+ JASC-PAL
+ 0100
+ 16
+-156 189 131
+-74 65 41
+-197 98 65
+-222 131 74
+-238 164 74
+-255 238 197
+-49 49 41
+-98 57 41
+-197 172 139
+-230 213 172
+-255 255 255
+-164 32 0
+-205 57 32
+-164 148 123
+-131 82 57
+-16 0 0
++0 0 0
++34 39 51
++55 84 126
++144 161 171
++178 220 237
++235 255 255
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
++0 0 0
+diff --git a/src/data/pokemon/pokedex_entries.h b/src/data/pokemon/pokedex_entries.h
+index 8a15a18..d63e7bf 100644
+--- a/src/data/pokemon/pokedex_entries.h
++++ b/src/data/pokemon/pokedex_entries.h
+@@ -3026,7 +3026,7 @@ const struct PokedexEntry gPokedexEntries[] =
+ 
+     [NATIONAL_DEX_TREECKO] =
+     {
+-        .categoryName = _("WOOD GECKO"),
++        .categoryName = _("SEED SHELL"),
+         .height = 5,
+         .weight = 50,
+         .description = gTreeckoPokedexText,
+@@ -3062,7 +3062,7 @@ const struct PokedexEntry gPokedexEntries[] =
+ 
+     [NATIONAL_DEX_TORCHIC] =
+     {
+-        .categoryName = _("CHICK"),
++        .categoryName = _("EMBER FOX"),
+         .height = 4,
+         .weight = 25,
+         .description = gTorchicPokedexText,
+@@ -3098,7 +3098,7 @@ const struct PokedexEntry gPokedexEntries[] =
+ 
+     [NATIONAL_DEX_MUDKIP] =
+     {
+-        .categoryName = _("MUD FISH"),
++        .categoryName = _("RIVER PUP"),
+         .height = 4,
+         .weight = 76,
+         .description = gMudkipPokedexText,
+@@ -3134,7 +3134,7 @@ const struct PokedexEntry gPokedexEntries[] =
+ 
+     [NATIONAL_DEX_POOCHYENA] =
+     {
+-        .categoryName = _("BITE"),
++        .categoryName = _("BOG HARE"),
+         .height = 5,
+         .weight = 136,
+         .description = gPoochyenaPokedexText,
+@@ -3158,7 +3158,7 @@ const struct PokedexEntry gPokedexEntries[] =
+ 
+     [NATIONAL_DEX_ZIGZAGOON] =
+     {
+-        .categoryName = _("TINYRACCOON"),
++        .categoryName = _("REED WADER"),
+         .height = 4,
+         .weight = 175,
+         .description = gZigzagoonPokedexText,
+@@ -3182,7 +3182,7 @@ const struct PokedexEntry gPokedexEntries[] =
+ 
+     [NATIONAL_DEX_WURMPLE] =
+     {
+-        .categoryName = _("WORM"),
++        .categoryName = _("POD BEETLE"),
+         .height = 3,
+         .weight = 36,
+         .description = gWurmplePokedexText,
+diff --git a/src/data/pokemon/pokedex_text.h b/src/data/pokemon/pokedex_text.h
+index ec4a831..66b9554 100644
+--- a/src/data/pokemon/pokedex_text.h
++++ b/src/data/pokemon/pokedex_text.h
+@@ -1511,10 +1511,9 @@ const u8 gCelebiPokedexText[] = _(
+     "shining future awaits us.");
+ 
+ const u8 gTreeckoPokedexText[] = _(
+-    "It makes its nest in a giant tree in the\n"
+-    "forest. It ferociously guards against\n"
+-    "anything nearing its territory. It is said\n"
+-    "to be the protector of the forest's trees.");
++    "It stores rain inside its shell.\n"
++    "A new leaf opens when it feels safe."
++);
+ 
+ const u8 gGrovylePokedexText[] = _(
+     "Leaves grow out of this POKéMON's body.\n"
+@@ -1529,10 +1528,9 @@ const u8 gSceptilePokedexText[] = _(
+     "by basking in sunlight.");
+ 
+ const u8 gTorchicPokedexText[] = _(
+-    "If attacked, it strikes back by spitting\n"
+-    "balls of fire it forms in its stomach.\n"
+-    "A TORCHIC dislikes darkness because it\n"
+-    "can't see its surroundings.");
++    "Its tail glows after sunset.\n"
++    "It uses the light to find its den."
++);
+ 
+ const u8 gCombuskenPokedexText[] = _(
+     "It lashes out with 10 kicks per second.\n"
+@@ -1547,10 +1545,9 @@ const u8 gBlazikenPokedexText[] = _(
+     "feathers grow back in their place.");
+ 
+ const u8 gMudkipPokedexText[] = _(
+-    "On land, it can powerfully lift large\n"
+-    "boulders by planting its four feet and\n"
+-    "heaving. It sleeps by burying itself in soil\n"
+-    "at the water's edge.");
++    "It steers with its paddle tail.\n"
++    "It naps in calm bends of rivers."
++);
+ 
+ const u8 gMarshtompPokedexText[] = _(
+     "Its toughened hind legs enable it to stand\n"
+@@ -1565,10 +1562,9 @@ const u8 gSwampertPokedexText[] = _(
+     "a jet ski.");
+ 
+ const u8 gPoochyenaPokedexText[] = _(
+-    "It savagely threatens foes with bared\n"
+-    "fangs. It chases after fleeing targets\n"
+-    "tenaciously. It turns tail and runs,\n"
+-    "however, if the foe strikes back.");
++    "Its roots let it hear footsteps.\n"
++    "It hides deep in the soft peat."
++);
+ 
+ const u8 gMightyenaPokedexText[] = _(
+     "In the wild, MIGHTYENA live in a pack.\n"
+@@ -1577,10 +1573,9 @@ const u8 gMightyenaPokedexText[] = _(
+     "coordinated teamwork.");
+ 
+ const u8 gZigzagoonPokedexText[] = _(
+-    "Rubbing its nose against the ground, it\n"
+-    "always wanders about back and forth in\n"
+-    "search of something. It is distinguished\n"
+-    "by the zigzag footprints it leaves.");
++    "It taps mud to find tiny prey.\n"
++    "Flocks patrol the reed beds."
++);
+ 
+ const u8 gLinoonePokedexText[] = _(
+     "It is exceedingly fast if it only has to run\n"
+@@ -1589,10 +1584,9 @@ const u8 gLinoonePokedexText[] = _(
+     "in and catches it with its sharp claws.");
+ 
+ const u8 gWurmplePokedexText[] = _(
+-    "It sticks to tree branches and eats\n"
+-    "leaves. The thread it spits from its mouth,\n"
+-    "which becomes gooey when it touches\n"
+-    "air, slows the movement of its foes.");
++    "It sleeps inside empty seed pods.\n"
++    "It moves when the ground warms."
++);
+ 
+ const u8 gSilcoonPokedexText[] = _(
+     "It prepares for evolution using the\n"
+diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
+index fbd3bcb..306b395 100644
+--- a/src/data/pokemon/species_info.h
++++ b/src/data/pokemon/species_info.h
+@@ -7618,12 +7618,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
+ 
+     [SPECIES_TREECKO] =
+     {
+-        .baseHP        = 40,
+-        .baseAttack    = 45,
+-        .baseDefense   = 35,
+-        .baseSpeed     = 70,
+-        .baseSpAttack  = 65,
+-        .baseSpDefense = 55,
++        .baseHP        = 47,
++        .baseAttack    = 53,
++        .baseDefense   = 58,
++        .baseSpeed     = 50,
++        .baseSpAttack  = 53,
++        .baseSpDefense = 52,
+         .types = { TYPE_GRASS, TYPE_GRASS },
+         .catchRate = 45,
+         .expYield = 65,
+@@ -7708,12 +7708,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
+ 
+     [SPECIES_TORCHIC] =
+     {
+-        .baseHP        = 45,
+-        .baseAttack    = 60,
+-        .baseDefense   = 40,
+-        .baseSpeed     = 45,
+-        .baseSpAttack  = 70,
+-        .baseSpDefense = 50,
++        .baseHP        = 43,
++        .baseAttack    = 62,
++        .baseDefense   = 39,
++        .baseSpeed     = 62,
++        .baseSpAttack  = 60,
++        .baseSpDefense = 43,
+         .types = { TYPE_FIRE, TYPE_FIRE },
+         .catchRate = 45,
+         .expYield = 65,
+@@ -7798,12 +7798,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
+ 
+     [SPECIES_MUDKIP] =
+     {
+-        .baseHP        = 50,
+-        .baseAttack    = 70,
+-        .baseDefense   = 50,
+-        .baseSpeed     = 40,
+-        .baseSpAttack  = 50,
+-        .baseSpDefense = 50,
++        .baseHP        = 54,
++        .baseAttack    = 60,
++        .baseDefense   = 51,
++        .baseSpeed     = 42,
++        .baseSpAttack  = 51,
++        .baseSpDefense = 52,
+         .types = { TYPE_WATER, TYPE_WATER },
+         .catchRate = 45,
+         .expYield = 65,
+@@ -7888,12 +7888,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
+ 
+     [SPECIES_POOCHYENA] =
+     {
+-        .baseHP        = 35,
+-        .baseAttack    = 55,
+-        .baseDefense   = 35,
+-        .baseSpeed     = 35,
+-        .baseSpAttack  = 30,
+-        .baseSpDefense = 30,
++        .baseHP        = 45,
++        .baseAttack    = 49,
++        .baseDefense   = 38,
++        .baseSpeed     = 49,
++        .baseSpAttack  = 29,
++        .baseSpDefense = 33,
+         .types = { TYPE_DARK, TYPE_DARK },
+         .catchRate = 255,
+         .expYield = 55,
+@@ -7948,11 +7948,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
+ 
+     [SPECIES_ZIGZAGOON] =
+     {
+-        .baseHP        = 38,
+-        .baseAttack    = 30,
+-        .baseDefense   = 41,
+-        .baseSpeed     = 60,
+-        .baseSpAttack  = 30,
++        .baseHP        = 36,
++        .baseAttack    = 46,
++        .baseDefense   = 35,
++        .baseSpeed     = 58,
++        .baseSpAttack  = 32,
+         .baseSpDefense = 41,
+         .types = { TYPE_NORMAL, TYPE_NORMAL },
+         .catchRate = 255,
+@@ -8008,12 +8008,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
+ 
+     [SPECIES_WURMPLE] =
+     {
+-        .baseHP        = 45,
+-        .baseAttack    = 45,
+-        .baseDefense   = 35,
+-        .baseSpeed     = 20,
+-        .baseSpAttack  = 20,
+-        .baseSpDefense = 30,
++        .baseHP        = 40,
++        .baseAttack    = 41,
++        .baseDefense   = 37,
++        .baseSpeed     = 26,
++        .baseSpAttack  = 25,
++        .baseSpDefense = 31,
+         .types = { TYPE_BUG, TYPE_BUG },
+         .catchRate = 255,
+         .expYield = 54,
+diff --git a/src/data/region_map/region_map_sections.json b/src/data/region_map/region_map_sections.json
+index 4942612..5ef8f8d 100644
+--- a/src/data/region_map/region_map_sections.json
++++ b/src/data/region_map/region_map_sections.json
+@@ -2,7 +2,7 @@
+   "map_sections": [
+     {
+       "id": "MAPSEC_LITTLEROOT_TOWN",
+-      "name": "LITTLEROOT TOWN",
++      "name": "BRACKENHAVEN",
+       "x": 4,
+       "y": 11,
+       "width": 1,
+diff --git a/src/data/text/species_names.h b/src/data/text/species_names.h
+index 25f2c9a..6416aca 100644
+--- a/src/data/text/species_names.h
++++ b/src/data/text/species_names.h
+@@ -276,20 +276,20 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
+     [SPECIES_OLD_UNOWN_X] = _("?"),
+     [SPECIES_OLD_UNOWN_Y] = _("?"),
+     [SPECIES_OLD_UNOWN_Z] = _("?"),
+-    [SPECIES_TREECKO] = _("TREECKO"),
++    [SPECIES_TREECKO] = _("FERNUT"),
+     [SPECIES_GROVYLE] = _("GROVYLE"),
+     [SPECIES_SCEPTILE] = _("SCEPTILE"),
+-    [SPECIES_TORCHIC] = _("TORCHIC"),
++    [SPECIES_TORCHIC] = _("CINDRIX"),
+     [SPECIES_COMBUSKEN] = _("COMBUSKEN"),
+     [SPECIES_BLAZIKEN] = _("BLAZIKEN"),
+-    [SPECIES_MUDKIP] = _("MUDKIP"),
++    [SPECIES_MUDKIP] = _("RILLFIN"),
+     [SPECIES_MARSHTOMP] = _("MARSHTOMP"),
+     [SPECIES_SWAMPERT] = _("SWAMPERT"),
+-    [SPECIES_POOCHYENA] = _("POOCHYENA"),
++    [SPECIES_POOCHYENA] = _("PEATHARE"),
+     [SPECIES_MIGHTYENA] = _("MIGHTYENA"),
+-    [SPECIES_ZIGZAGOON] = _("ZIGZAGOON"),
++    [SPECIES_ZIGZAGOON] = _("SILTSTILT"),
+     [SPECIES_LINOONE] = _("LINOONE"),
+-    [SPECIES_WURMPLE] = _("WURMPLE"),
++    [SPECIES_WURMPLE] = _("PODTICK"),
+     [SPECIES_SILCOON] = _("SILCOON"),
+     [SPECIES_BEAUTIFLY] = _("BEAUTIFLY"),
+     [SPECIES_CASCOON] = _("CASCOON"),
