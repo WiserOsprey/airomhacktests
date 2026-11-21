@@ -72,8 +72,8 @@
 +                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSpecies, 128),
 +                                 41, 0, 0, sInk, TEXT_SKIP_DRAW, sSpecies);
 +    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
-+                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSubheading, 108),
-+                                 64, 0, 0, sInk, TEXT_SKIP_DRAW, sSubheading);
++                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSubheading, 128),
++                                 72, 0, 0, sInk, TEXT_SKIP_DRAW, sSubheading);
 +    for (i = 0; i < ARRAY_COUNT(sTasks); i++)
 +    {
 +        y = 95 + 15 * i;
