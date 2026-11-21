@@ -47,7 +47,7 @@
          if (!sPokedexListItem->owned)
              LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0) + 1], BG_PLTT_ID(3) + 1, PLTT_SIZEOF(16 - 1));
          CopyWindowToVram(WIN_INFO, COPYWIN_FULL);
-@@ -4129,6 +4154,31 @@
+@@ -4129,6 +4154,37 @@
  #undef tPersonalityHi
  
  // u32 value is re-used, but passed as a bool that's TRUE if national dex is enabled
@@ -65,9 +65,15 @@
 +    u8 i;
 +    u8 y;
 +
-+    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 97, 27, 0, 0, sInk, TEXT_SKIP_DRAW, sHeading);
-+    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 97, 46, 0, 0, sInk, TEXT_SKIP_DRAW, sSpecies);
-+    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 97, 66, 0, 0, sInk, TEXT_SKIP_DRAW, sSubheading);
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
++                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sHeading, 128),
++                                 26, 0, 0, sInk, TEXT_SKIP_DRAW, sHeading);
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
++                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSpecies, 128),
++                                 41, 0, 0, sInk, TEXT_SKIP_DRAW, sSpecies);
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
++                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSubheading, 108),
++                                 64, 0, 0, sInk, TEXT_SKIP_DRAW, sSubheading);
 +    for (i = 0; i < ARRAY_COUNT(sTasks); i++)
 +    {
 +        y = 95 + 15 * i;
