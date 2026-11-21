@@ -1,0 +1,160 @@
+--- a/src/pokedex.c
++++ b/src/pokedex.c
+@@ -780,9 +780,17 @@
+     {0}
+ };
+ 
++static const u16 sPurpleInterfacePalette[] =
++{
++    RGB(15, 16, 0), RGB(31, 31, 31), RGB(24, 4, 4), RGB(23, 23, 23),
++    RGB(20, 20, 20), RGB(12, 12, 14), RGB(5, 7, 8), RGB(5, 7, 13),
++    RGB(0, 0, 5), RGB(31, 31, 31), RGB(26, 20, 31), RGB(31, 17, 28),
++    RGB(23, 17, 30), RGB(14, 8, 22), RGB(29, 19, 30), RGB(0, 0, 0),
++};
++
+ static const struct SpritePalette sInterfaceSpritePalette[] =
+ {
+-    {gPokedexBgHoenn_Pal, TAG_DEX_INTERFACE},
++    {sPurpleInterfacePalette, TAG_DEX_INTERFACE},
+     {0}
+ };
+ 
+@@ -2050,8 +2058,18 @@
+ #undef tLoadScreenTaskId
+ 
+ // For loading main pokedex page or Pokédex search results
++static const u8 sPurpleDexTiles[] = INCBIN_U8("graphics/pokedex/purple/background.4bpp");
++static const u16 sPurpleDexMap[] = INCBIN_U16("graphics/pokedex/purple/list_underlay.bin");
++static const u8 sPurpleForegroundTiles[] = INCBIN_U8("graphics/pokedex/purple/foreground.4bpp");
++static const u16 sPurpleForegroundMap[] = INCBIN_U16("graphics/pokedex/purple/foreground.tilemap");
++static const u16 sPurpleForegroundPalette[] = INCBIN_U16("graphics/pokedex/purple/foreground.gbapal");
++static const u16 sPurpleDexPalette[] = INCBIN_U16("graphics/pokedex/purple/background.gbapal");
++
+ static bool8 LoadPokedexListPage(u8 page)
+ {
++    u16 x, y;
++    u16 *underlay;
++
+     switch (gMain.state)
+     {
+     case 0:
+@@ -2069,8 +2087,14 @@
+         SetBgTilemapBuffer(1, AllocZeroed(BG_SCREEN_SIZE));
+         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
+         DecompressAndLoadBgGfxUsingHeap(3, gPokedexMenu_Gfx, 0x2000, 0, 0);
+-        CopyToBgTilemapBuffer(1, gPokedexList_Tilemap, 0, 0);
+-        CopyToBgTilemapBuffer(3, gPokedexListUnderlay_Tilemap, 0, 0);
++        SetBgAttribute(1, BG_ATTR_PRIORITY, 3);
++        LoadBgTiles(3, sPurpleDexTiles, sizeof(sPurpleDexTiles), 256);
++        underlay = GetBgTilemapBuffer(3);
++        for (y = 0; y < 20; y++)
++            for (x = 0; x < 30; x++)
++                underlay[y * 32 + x] = sPurpleDexMap[y * 32 + x] + 256 + (6 << 12);
++        LoadBgTiles(1, sPurpleForegroundTiles, sizeof(sPurpleForegroundTiles), 733);
++        CopyToBgTilemapBuffer(1, sPurpleForegroundMap, sizeof(sPurpleForegroundMap), 0);
+         if (page == PAGE_MAIN)
+             CopyToBgTilemapBuffer(0, gPokedexStartMenuMain_Tilemap, 0, 0x280);
+         else
+@@ -2081,6 +2105,8 @@
+         else
+             sPokedexView->isSearchResults = TRUE;
+         LoadPokedexBgPalette(sPokedexView->isSearchResults);
++        LoadPalette(sPurpleDexPalette, BG_PLTT_ID(6), sizeof(sPurpleDexPalette));
++        LoadPalette(sPurpleForegroundPalette, BG_PLTT_ID(12), sizeof(sPurpleForegroundPalette));
+         InitWindows(sPokemonList_WindowTemplate);
+         DeactivateAllTextPrinters();
+         PutWindowTilemap(0);
+@@ -2118,15 +2144,15 @@
+         break;
+     case 5:
+         SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_ALL | WININ_WIN1_ALL);
+-        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_ALL | WINOUT_WINOBJ_BG0 | WINOUT_WINOBJ_BG2 | WINOUT_WINOBJ_BG3 | WINOUT_WINOBJ_OBJ);
+-        SetGpuReg(REG_OFFSET_WIN0H, 0);
+-        SetGpuReg(REG_OFFSET_WIN0V, 0);
++        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_ALL & ~WINOUT_WIN01_BG2);
++        SetGpuReg(REG_OFFSET_WIN0H, (135 << 8) | 229);
++        SetGpuReg(REG_OFFSET_WIN0V, (24 << 8) | 135);
+         SetGpuReg(REG_OFFSET_WIN1H, 0);
+         SetGpuReg(REG_OFFSET_WIN1V, 0);
+         SetGpuReg(REG_OFFSET_BLDCNT, 0);
+         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+         SetGpuReg(REG_OFFSET_BLDY, 0);
+-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON | DISPCNT_OBJWIN_ON);
++        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON | DISPCNT_WIN0_ON);
+         ShowBg(0);
+         ShowBg(1);
+         ShowBg(2);
+@@ -2780,13 +2806,13 @@
+     u16 digitNum;
+ 
+     // Scroll arrows
+-    spriteId = CreateSprite(&sScrollArrowSpriteTemplate, 184, 4, 0);
++    spriteId = CreateSprite(&sScrollArrowSpriteTemplate, 232, 20, 0);
+     gSprites[spriteId].sIsDownArrow = FALSE;
+-    spriteId = CreateSprite(&sScrollArrowSpriteTemplate, 184, DISPLAY_HEIGHT - 4, 0);
++    spriteId = CreateSprite(&sScrollArrowSpriteTemplate, 232, 139, 0);
+     gSprites[spriteId].sIsDownArrow = TRUE;
+     gSprites[spriteId].vFlip = TRUE;
+ 
+-    CreateSprite(&sScrollBarSpriteTemplate, 230, 20, 0);
++    CreateSprite(&sScrollBarSpriteTemplate, 232, 29, 0);
+     // Start button
+     CreateSprite(&sInterfaceTextSpriteTemplate, 16, 120, 0);
+     // Menu text
+@@ -2801,12 +2827,14 @@
+     StartSpriteAnim(&gSprites[spriteId], 1);
+ 
+     spriteId = CreateSprite(&sRotatingPokeBallSpriteTemplate, 0, DISPLAY_HEIGHT / 2, 2);
++    gSprites[spriteId].invisible = TRUE;
+     gSprites[spriteId].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+     gSprites[spriteId].oam.matrixNum = 30;
+     gSprites[spriteId].data[0] = 30;
+     gSprites[spriteId].data[1] = 0;
+ 
+     spriteId = CreateSprite(&sRotatingPokeBallSpriteTemplate, 0, DISPLAY_HEIGHT / 2, 2);
++    gSprites[spriteId].invisible = TRUE;
+     gSprites[spriteId].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+     gSprites[spriteId].oam.matrixNum = 31;
+     gSprites[spriteId].data[0] = 31;
+@@ -3046,16 +3074,16 @@
+     else
+     {
+         u32 var;
+-        sprite->y2 = gSineTable[(u8)sprite->data[5]] * 76 / 256;
+-        var = SAFE_DIV(0x10000, gSineTable[sprite->data[5] + 64]);
++        sprite->y2 = gSineTable[(u8)sprite->data[5]] * 44 / 256;
++        var = SAFE_DIV(0x16000, gSineTable[sprite->data[5] + 64]);
+         if (var > 0xFFFF)
+             var = 0xFFFF;
+-        SetOamMatrix(sprite->data[1] + 1, 0x100, 0, 0, var);
++        SetOamMatrix(sprite->data[1] + 1, 0x160, 0, 0, var);
+         sprite->oam.matrixNum = monId + 1;
+ 
+         if (sprite->data[5] > -64 && sprite->data[5] < 64)
+         {
+-            sprite->invisible = FALSE;
++            sprite->invisible = (sprite->data[5] < -12 || sprite->data[5] > 12);
+             sprite->data[0] = 1;
+         }
+         else
+@@ -3075,8 +3103,10 @@
+ {
+     if (sPokedexView->currentPage != PAGE_MAIN && sPokedexView->currentPage != PAGE_SEARCH_RESULTS)
+         DestroySprite(sprite);
++    else if (sPokedexView->pokemonListCount > 1)
++        sprite->y2 = sPokedexView->selectedPokemon * 102 / (sPokedexView->pokemonListCount - 1);
+     else
+-        sprite->y2 = sPokedexView->selectedPokemon * 120 / (sPokedexView->pokemonListCount - 1);
++        sprite->y2 = 0;
+ }
+ 
+ static void SpriteCB_ScrollArrow(struct Sprite *sprite)
+@@ -5619,7 +5649,7 @@
+ {
+     u8 spriteId;
+ 
+-    spriteId = CreateSprite(&sScrollArrowSpriteTemplate, 184, 4, 0);
++    spriteId = CreateSprite(&sScrollArrowSpriteTemplate, 232, 20, 0);
+     gSprites[spriteId].sTaskId = taskId;
+     gSprites[spriteId].sIsDownArrow = FALSE;
+     gSprites[spriteId].callback = SpriteCB_SearchParameterScrollArrow;
