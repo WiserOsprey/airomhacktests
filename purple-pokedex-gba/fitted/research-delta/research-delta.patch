@@ -1,0 +1,980 @@
+diff --git a/data/battle_anim_scripts.s b/data/battle_anim_scripts.s
+index 4f4338a..569692d 100644
+--- a/data/battle_anim_scripts.s
++++ b/data/battle_anim_scripts.s
+@@ -371,6 +371,7 @@ gBattleAnims_Moves::
+ 	.4byte Move_WATER_PULSE
+ 	.4byte Move_DOOM_DESIRE
+ 	.4byte Move_PSYCHO_BOOST
++	.4byte Move_RAZOR_LEAF @ Solar Leaf
+ 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
+ 
+ 	.align 2
+diff --git a/data/maps/OldaleTown_Mart/scripts.inc b/data/maps/OldaleTown_Mart/scripts.inc
+index 1e1aacb..01ad998 100644
+--- a/data/maps/OldaleTown_Mart/scripts.inc
++++ b/data/maps/OldaleTown_Mart/scripts.inc
+@@ -14,6 +14,7 @@ OldaleTown_Mart_EventScript_Clerk::
+ 
+ 	.align 2
+ OldaleTown_Mart_Pokemart_Basic:
++	.2byte ITEM_TOXIC_SLUDGE
+ 	.2byte ITEM_POTION
+ 	.2byte ITEM_ANTIDOTE
+ 	.2byte ITEM_PARALYZE_HEAL
+@@ -29,6 +30,7 @@ OldaleTown_Mart_ExpandedItems::
+ 	.align 2
+ OldaleTown_Mart_Pokemart_Expanded:
+ 	.2byte ITEM_POKE_BALL
++	.2byte ITEM_TOXIC_SLUDGE
+ 	.2byte ITEM_POTION
+ 	.2byte ITEM_ANTIDOTE
+ 	.2byte ITEM_PARALYZE_HEAL
+diff --git a/graphics/pokedex/purple/delta-bulbasaur-shiny.pal b/graphics/pokedex/purple/delta-bulbasaur-shiny.pal
+new file mode 100644
+index 0000000..d857dc3
+--- /dev/null
++++ b/graphics/pokedex/purple/delta-bulbasaur-shiny.pal
+@@ -0,0 +1,19 @@
++JASC-PAL
++0100
++16
++0 0 0
++251 234 182
++234 163 200
++196 105 167
++143 60 125
++66 25 71
++234 213 134
++171 148 65
++91 74 29
++200 180 200
++18 13 28
++184 250 167
++127 195 125
++67 139 86
++35 78 46
++255 0 255
+diff --git a/graphics/pokedex/purple/delta-bulbasaur.pal b/graphics/pokedex/purple/delta-bulbasaur.pal
+new file mode 100644
+index 0000000..3e7df6b
+--- /dev/null
++++ b/graphics/pokedex/purple/delta-bulbasaur.pal
+@@ -0,0 +1,19 @@
++JASC-PAL
++0100
++16
++0 0 0
++247 231 174
++192 170 244
++147 118 206
++97 67 154
++45 26 75
++247 155 133
++190 82 113
++120 35 80
++193 178 199
++18 13 28
++205 223 76
++161 193 54
++101 129 37
++56 77 25
++255 0 255
+diff --git a/include/bulbasaur_field_notes.h b/include/bulbasaur_field_notes.h
+new file mode 100644
+index 0000000..a1d4939
+--- /dev/null
++++ b/include/bulbasaur_field_notes.h
+@@ -0,0 +1,16 @@
++#ifndef GUARD_BULBASAUR_FIELD_NOTES_H
++#define GUARD_BULBASAUR_FIELD_NOTES_H
++
++#define BULBASAUR_NOTES_RESEARCH (1 << 0)
++#define BULBASAUR_NOTES_DELTA (1 << 1)
++#define BULBASAUR_NOTES_DELTA_CAUGHT (1 << 2)
++#define BULBASAUR_NOTES_RESEARCH_PROGRESS_SHIFT 4
++#define BULBASAUR_NOTES_DELTA_PROGRESS_SHIFT 6
++
++u16 BulbasaurNotes_GetUnlocks(void);
++void BulbasaurNotes_StartBattle(void);
++void BulbasaurNotes_RecordMove(u8 battler, u16 move);
++void BulbasaurNotes_FinishBattle(void);
++bool8 BulbasaurNotes_OfferDeltaEncounter(void);
++
++#endif
+diff --git a/include/constants/items.h b/include/constants/items.h
+index aa241fa..e29979a 100644
+--- a/include/constants/items.h
++++ b/include/constants/items.h
+@@ -62,7 +62,7 @@ enum {
+     ITEM_BLUE_SHARD,
+     ITEM_YELLOW_SHARD,
+     ITEM_GREEN_SHARD,
+-    ITEM_034,
++    ITEM_TOXIC_SLUDGE,
+     ITEM_035,
+     ITEM_036,
+     ITEM_037,
+diff --git a/include/constants/moves.h b/include/constants/moves.h
+index 324bfb8..b490a76 100644
+--- a/include/constants/moves.h
++++ b/include/constants/moves.h
+@@ -357,7 +357,9 @@
+ #define MOVE_DOOM_DESIRE 353
+ #define MOVE_PSYCHO_BOOST 354
+ 
+-#define MOVES_COUNT 355
++#define MOVE_SOLAR_LEAF 355
++
++#define MOVES_COUNT 356
+ 
+ // Used for checks for moves affected by Disable, Mimic, etc.
+ #define MOVE_UNAVAILABLE 0xFFFF
+diff --git a/include/constants/species.h b/include/constants/species.h
+index ec60c14..b3dea23 100644
+--- a/include/constants/species.h
++++ b/include/constants/species.h
+@@ -255,6 +255,7 @@
+ #define SPECIES_CELEBI 251
+ 
+ #define SPECIES_OLD_UNOWN_B 252
++#define SPECIES_DELTA_BULBASAUR SPECIES_OLD_UNOWN_B
+ #define SPECIES_OLD_UNOWN_C 253
+ #define SPECIES_OLD_UNOWN_D 254
+ #define SPECIES_OLD_UNOWN_E 255
+diff --git a/include/constants/vars.h b/include/constants/vars.h
+index 1b71134..823e543 100644
+--- a/include/constants/vars.h
++++ b/include/constants/vars.h
+@@ -264,7 +264,7 @@
+ #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
+ #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
+ #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
+-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
++#define VAR_BULBASAUR_FIELD_NOTES                        0x40F7
+ #define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+ #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
+ #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+diff --git a/include/graphics.h b/include/graphics.h
+index 14f2f5e..0d0b16d 100644
+--- a/include/graphics.h
++++ b/include/graphics.h
+@@ -35,6 +35,8 @@ extern const u32 gOpenPokeballGfx[];
+ // Pokémon gfx
+ extern const u32 gMonFrontPic_Bulbasaur[];
+ extern const u32 gMonPalette_Bulbasaur[];
++extern const u32 gMonPalette_DeltaBulbasaur[];
++extern const u32 gMonShinyPalette_DeltaBulbasaur[];
+ extern const u32 gMonBackPic_Bulbasaur[];
+ extern const u32 gMonShinyPalette_Bulbasaur[];
+ extern const u32 gMonStillFrontPic_Bulbasaur[];
+diff --git a/src/battle_main.c b/src/battle_main.c
+index 11fc168..8fc2171 100644
+--- a/src/battle_main.c
++++ b/src/battle_main.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "bulbasaur_field_notes.h"
+ #include "battle.h"
+ #include "battle_anim.h"
+ #include "battle_ai_script_commands.h"
+@@ -3093,6 +3094,7 @@ static void BattleStartClearSetData(void)
+     gBattleScripting.battleStyle = gSaveBlock2Ptr->optionsBattleStyle;
+ 
+     gMultiHitCounter = 0;
++    BulbasaurNotes_StartBattle();
+     gBattleOutcome = 0;
+     gBattleControllerExecFlags = 0;
+     gPaydayMoney = 0;
+@@ -5225,6 +5227,7 @@ static void ReturnFromBattleToOverworld(void)
+     if (gBattleTypeFlags & BATTLE_TYPE_LINK && gReceivedRemoteLinkPlayers)
+         return;
+ 
++    BulbasaurNotes_FinishBattle();
+     gSpecialVar_Result = gBattleOutcome;
+     gMain.inBattle = FALSE;
+     gMain.callback1 = gPreBattleCallback1;
+diff --git a/src/battle_script_commands.c b/src/battle_script_commands.c
+index 3af09ec..a826f79 100644
+--- a/src/battle_script_commands.c
++++ b/src/battle_script_commands.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "bulbasaur_field_notes.h"
+ #include "battle.h"
+ #include "battle_message.h"
+ #include "battle_anim.h"
+@@ -1195,6 +1196,7 @@ static void Cmd_attackstring(void)
+ 
+     if (!(gHitMarker & (HITMARKER_NO_ATTACKSTRING | HITMARKER_ATTACKSTRING_PRINTED)))
+     {
++        BulbasaurNotes_RecordMove(gBattlerAttacker, gCurrentMove);
+         PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
+         gHitMarker |= HITMARKER_ATTACKSTRING_PRINTED;
+     }
+diff --git a/src/bulbasaur_field_notes.c b/src/bulbasaur_field_notes.c
+new file mode 100644
+index 0000000..1269651
+--- /dev/null
++++ b/src/bulbasaur_field_notes.c
+@@ -0,0 +1,96 @@
++#include "global.h"
++#include "battle.h"
++#include "battle_anim.h"
++#include "bulbasaur_field_notes.h"
++#include "data.h"
++#include "event_data.h"
++#include "overworld.h"
++#include "pokemon.h"
++#include "constants/items.h"
++#include "constants/map_types.h"
++#include "constants/moves.h"
++#include "constants/species.h"
++#include "constants/vars.h"
++
++static EWRAM_DATA u8 sResearchSteps[PARTY_SIZE] = {0};
++static EWRAM_DATA bool8 sDeltaTrial = FALSE;
++
++static bool8 IsFieldBattle(void)
++{
++    return !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED | BATTLE_TYPE_FRONTIER
++                                 | BATTLE_TYPE_SAFARI | BATTLE_TYPE_WALLY_TUTORIAL));
++}
++
++u16 BulbasaurNotes_GetUnlocks(void)
++{
++    return VarGet(VAR_BULBASAUR_FIELD_NOTES);
++}
++
++void BulbasaurNotes_StartBattle(void)
++{
++    u8 slot;
++    for (slot = 0; slot < PARTY_SIZE; slot++)
++        sResearchSteps[slot] = 0;
++    sDeltaTrial = FALSE;
++}
++
++static void RecordBestProgress(u8 shift, u8 steps)
++{
++    u16 unlocks = BulbasaurNotes_GetUnlocks();
++    if (((unlocks >> shift) & 3) < steps)
++        VarSet(VAR_BULBASAUR_FIELD_NOTES, (unlocks & ~(3 << shift)) | (steps << shift));
++}
++
++void BulbasaurNotes_RecordMove(u8 battler, u16 move)
++{
++    static const u16 sResearchMoves[] = {MOVE_ABSORB, MOVE_GROWTH, MOVE_RAZOR_LEAF};
++    u16 slot;
++
++    if (!IsFieldBattle() || GetBattlerSide(battler) != B_SIDE_PLAYER
++        || gBattleMons[battler].species != SPECIES_BULBASAUR || move >= MOVES_COUNT)
++        return;
++    slot = gBattlerPartyIndexes[battler];
++    if (slot >= PARTY_SIZE || GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES) != SPECIES_BULBASAUR)
++        return;
++
++    if (sResearchSteps[slot] < ARRAY_COUNT(sResearchMoves)
++        && move == sResearchMoves[sResearchSteps[slot]])
++    {
++        sResearchSteps[slot]++;
++        RecordBestProgress(BULBASAUR_NOTES_RESEARCH_PROGRESS_SHIFT, sResearchSteps[slot]);
++        if (sResearchSteps[slot] == ARRAY_COUNT(sResearchMoves))
++            VarSet(VAR_BULBASAUR_FIELD_NOTES, BulbasaurNotes_GetUnlocks() | BULBASAUR_NOTES_RESEARCH);
++    }
++
++    if (gBattleMons[battler].item == ITEM_TOXIC_SLUDGE)
++    {
++        if (GetCurrentMapType() != MAP_TYPE_UNDERGROUND)
++            RecordBestProgress(BULBASAUR_NOTES_DELTA_PROGRESS_SHIFT, 1);
++        else if (gBattleMoves[move].type != TYPE_POISON)
++            RecordBestProgress(BULBASAUR_NOTES_DELTA_PROGRESS_SHIFT, 2);
++        else
++        {
++            RecordBestProgress(BULBASAUR_NOTES_DELTA_PROGRESS_SHIFT, 3);
++            sDeltaTrial = TRUE;
++        }
++    }
++}
++
++void BulbasaurNotes_FinishBattle(void)
++{
++    if (!IsFieldBattle())
++        return;
++    if (sDeltaTrial && gBattleOutcome == B_OUTCOME_WON)
++        VarSet(VAR_BULBASAUR_FIELD_NOTES, BulbasaurNotes_GetUnlocks() | BULBASAUR_NOTES_DELTA);
++    if (gBattleOutcome == B_OUTCOME_CAUGHT
++        && GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == SPECIES_DELTA_BULBASAUR)
++        VarSet(VAR_BULBASAUR_FIELD_NOTES, BulbasaurNotes_GetUnlocks() | BULBASAUR_NOTES_DELTA_CAUGHT);
++}
++
++bool8 BulbasaurNotes_OfferDeltaEncounter(void)
++{
++    u16 unlocks = BulbasaurNotes_GetUnlocks();
++    return GetCurrentMapType() == MAP_TYPE_UNDERGROUND
++        && (unlocks & BULBASAUR_NOTES_DELTA)
++        && !(unlocks & BULBASAUR_NOTES_DELTA_CAUGHT);
++}
+diff --git a/src/data/battle_moves.h b/src/data/battle_moves.h
+index 8289212..02f87d0 100644
+--- a/src/data/battle_moves.h
++++ b/src/data/battle_moves.h
+@@ -4614,4 +4614,14 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
+         .priority = 0,
+         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+     },
++    [MOVE_SOLAR_LEAF] =
++    {
++        .effect = EFFECT_HIGH_CRITICAL,
++        .power = 75,
++        .type = TYPE_GRASS,
++        .accuracy = 100,
++        .pp = 15,
++        .target = MOVE_TARGET_SELECTED,
++        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
++    },
+ };
+diff --git a/src/data/graphics/pokemon.h b/src/data/graphics/pokemon.h
+index 6fbd1b7..709dc60 100644
+--- a/src/data/graphics/pokemon.h
++++ b/src/data/graphics/pokemon.h
+@@ -1,4 +1,6 @@
+ const u32 gMonStillFrontPic_Bulbasaur[] = INCGFX_U32("graphics/pokemon/bulbasaur/front.png", ".4bpp.lz");
++const u32 gMonPalette_DeltaBulbasaur[] = INCGFX_U32("graphics/pokedex/purple/delta-bulbasaur.pal", ".gbapal.lz");
++const u32 gMonShinyPalette_DeltaBulbasaur[] = INCGFX_U32("graphics/pokedex/purple/delta-bulbasaur-shiny.pal", ".gbapal.lz");
+ const u32 gMonPalette_Bulbasaur[] = INCGFX_U32("graphics/pokemon/bulbasaur/normal.pal", ".gbapal.lz");
+ const u32 gMonBackPic_Bulbasaur[] = INCGFX_U32("graphics/pokemon/bulbasaur/back.png", ".4bpp.lz");
+ const u32 gMonShinyPalette_Bulbasaur[] = INCGFX_U32("graphics/pokemon/bulbasaur/shiny.pal", ".gbapal.lz");
+diff --git a/src/data/item_icon_table.h b/src/data/item_icon_table.h
+index 64328f7..bcd0836 100644
+--- a/src/data/item_icon_table.h
++++ b/src/data/item_icon_table.h
+@@ -56,7 +56,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
+     [ITEM_YELLOW_SHARD] = {gItemIcon_Shard, gItemIconPalette_YellowShard},
+     [ITEM_GREEN_SHARD] = {gItemIcon_Shard, gItemIconPalette_GreenShard},
+     // ????????
+-    [ITEM_034] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
++    [ITEM_TOXIC_SLUDGE] = {gItemIcon_PoisonBarb, gItemIconPalette_PoisonBarb},
+     [ITEM_035] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+     [ITEM_036] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+     [ITEM_037] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+diff --git a/src/data/items.h b/src/data/items.h
+index 27326e0..aac006f 100644
+--- a/src/data/items.h
++++ b/src/data/items.h
+@@ -1,3 +1,6 @@
++static const u8 sToxicSludgeDesc[] = _("A held sample of\n"
++                                        "sludge from a cave.");
++
+ const struct Item gItems[] =
+ {
+     [ITEM_NONE] =
+@@ -679,12 +682,12 @@ const struct Item gItems[] =
+         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+     },
+ 
+-    [ITEM_034] =
++    [ITEM_TOXIC_SLUDGE] =
+     {
+-        .name = _("????????"),
+-        .itemId = ITEM_NONE,
+-        .price = 0,
+-        .description = sDummyDesc,
++        .name = _("TOXIC SLUDGE"),
++        .itemId = ITEM_TOXIC_SLUDGE,
++        .price = 500,
++        .description = sToxicSludgeDesc,
+         .pocket = POCKET_ITEMS,
+         .type = ITEM_USE_BAG_MENU,
+         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+diff --git a/src/data/pokemon/level_up_learnset_pointers.h b/src/data/pokemon/level_up_learnset_pointers.h
+index 661458c..ac50f9b 100644
+--- a/src/data/pokemon/level_up_learnset_pointers.h
++++ b/src/data/pokemon/level_up_learnset_pointers.h
+@@ -252,7 +252,7 @@ const u16 *const gLevelUpLearnsets[NUM_SPECIES] =
+     [SPECIES_LUGIA] = sLugiaLevelUpLearnset,
+     [SPECIES_HO_OH] = sHoOhLevelUpLearnset,
+     [SPECIES_CELEBI] = sCelebiLevelUpLearnset,
+-    [SPECIES_OLD_UNOWN_B] = sSpecies252LevelUpLearnset,
++    [SPECIES_DELTA_BULBASAUR] = sDeltaBulbasaurLevelUpLearnset,
+     [SPECIES_OLD_UNOWN_C] = sSpecies253LevelUpLearnset,
+     [SPECIES_OLD_UNOWN_D] = sSpecies254LevelUpLearnset,
+     [SPECIES_OLD_UNOWN_E] = sSpecies255LevelUpLearnset,
+diff --git a/src/data/pokemon/level_up_learnsets.h b/src/data/pokemon/level_up_learnsets.h
+index 212b969..3f6876e 100644
+--- a/src/data/pokemon/level_up_learnsets.h
++++ b/src/data/pokemon/level_up_learnsets.h
+@@ -7,9 +7,10 @@ static const u16 sBulbasaurLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(10, MOVE_VINE_WHIP),
+     LEVEL_UP_MOVE(15, MOVE_POISON_POWDER),
+     LEVEL_UP_MOVE(15, MOVE_SLEEP_POWDER),
++    LEVEL_UP_MOVE(18, MOVE_ABSORB),
++    LEVEL_UP_MOVE(19, MOVE_GROWTH),
+     LEVEL_UP_MOVE(20, MOVE_RAZOR_LEAF),
+     LEVEL_UP_MOVE(25, MOVE_SWEET_SCENT),
+-    LEVEL_UP_MOVE(32, MOVE_GROWTH),
+     LEVEL_UP_MOVE(39, MOVE_SYNTHESIS),
+     LEVEL_UP_MOVE(46, MOVE_SOLAR_BEAM),
+     LEVEL_UP_END
+@@ -3444,7 +3445,11 @@ static const u16 sCelebiLevelUpLearnset[] = {
+     LEVEL_UP_END
+ };
+ 
+-static const u16 sSpecies252LevelUpLearnset[] = {
++static const u16 sDeltaBulbasaurLevelUpLearnset[] = {
++    LEVEL_UP_MOVE( 1, MOVE_POISON_STING),
++    LEVEL_UP_MOVE( 8, MOVE_ACID),
++    LEVEL_UP_MOVE(14, MOVE_POISON_POWDER),
++    LEVEL_UP_MOVE(20, MOVE_SLUDGE),
+     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+     LEVEL_UP_END
+ };
+diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
+index 306b395..e88c928 100644
+--- a/src/data/pokemon/species_info.h
++++ b/src/data/pokemon/species_info.h
+@@ -7566,7 +7566,35 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .noFlip = FALSE,
+     },
+ 
+-    [SPECIES_OLD_UNOWN_B] = OLD_UNOWN_SPECIES_INFO,
++    [SPECIES_DELTA_BULBASAUR] =
++    {
++        .baseHP        = 45,
++        .baseAttack    = 49,
++        .baseDefense   = 49,
++        .baseSpeed     = 45,
++        .baseSpAttack  = 65,
++        .baseSpDefense = 65,
++        .types = { TYPE_POISON, TYPE_POISON },
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_HP        = 0,
++        .evYield_Attack    = 0,
++        .evYield_Defense   = 0,
++        .evYield_Speed     = 0,
++        .evYield_SpAttack  = 1,
++        .evYield_SpDefense = 0,
++        .itemCommon = ITEM_NONE,
++        .itemRare   = ITEM_NONE,
++        .genderRatio = PERCENT_FEMALE(12.5),
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_SLOW,
++        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS },
++        .abilities = {ABILITY_POISON_POINT, ABILITY_NONE},
++        .safariZoneFleeRate = 0,
++        .bodyColor = BODY_COLOR_GREEN,
++        .noFlip = FALSE,
++    },
+ 
+     [SPECIES_OLD_UNOWN_C] = OLD_UNOWN_SPECIES_INFO,
+ 
+diff --git a/src/data/pokemon_graphics/back_pic_coordinates.h b/src/data/pokemon_graphics/back_pic_coordinates.h
+index 43986dd..f25b1cb 100644
+--- a/src/data/pokemon_graphics/back_pic_coordinates.h
++++ b/src/data/pokemon_graphics/back_pic_coordinates.h
+@@ -256,7 +256,7 @@ const struct MonCoords gMonBackPicCoords[] =
+     [SPECIES_LUGIA]       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
+     [SPECIES_HO_OH]       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
+     [SPECIES_CELEBI]      = { .size = MON_COORDS_SIZE(48, 48), .y_offset =  8 },
+-    [SPECIES_OLD_UNOWN_B] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  2 },
++    [SPECIES_DELTA_BULBASAUR]   = { .size = MON_COORDS_SIZE(48, 32), .y_offset = 16 },
+     [SPECIES_OLD_UNOWN_C] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  2 },
+     [SPECIES_OLD_UNOWN_D] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  2 },
+     [SPECIES_OLD_UNOWN_E] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  2 },
+diff --git a/src/data/pokemon_graphics/back_pic_table.h b/src/data/pokemon_graphics/back_pic_table.h
+index 1a51f9c..158f34a 100644
+--- a/src/data/pokemon_graphics/back_pic_table.h
++++ b/src/data/pokemon_graphics/back_pic_table.h
+@@ -252,7 +252,7 @@ const struct CompressedSpriteSheet gMonBackPicTable[] =
+     SPECIES_SPRITE(LUGIA, gMonBackPic_Lugia),
+     SPECIES_SPRITE(HO_OH, gMonBackPic_HoOh),
+     SPECIES_SPRITE(CELEBI, gMonBackPic_Celebi),
+-    SPECIES_SPRITE(OLD_UNOWN_B, gMonBackPic_DoubleQuestionMark),
++    SPECIES_SPRITE(DELTA_BULBASAUR, gMonBackPic_Bulbasaur),
+     SPECIES_SPRITE(OLD_UNOWN_C, gMonBackPic_DoubleQuestionMark),
+     SPECIES_SPRITE(OLD_UNOWN_D, gMonBackPic_DoubleQuestionMark),
+     SPECIES_SPRITE(OLD_UNOWN_E, gMonBackPic_DoubleQuestionMark),
+diff --git a/src/data/pokemon_graphics/footprint_table.h b/src/data/pokemon_graphics/footprint_table.h
+index d63e33e..9333be7 100644
+--- a/src/data/pokemon_graphics/footprint_table.h
++++ b/src/data/pokemon_graphics/footprint_table.h
+@@ -252,7 +252,7 @@ const u8 *const gMonFootprintTable[] =
+     [SPECIES_LUGIA] = gMonFootprint_Lugia,
+     [SPECIES_HO_OH] = gMonFootprint_HoOh,
+     [SPECIES_CELEBI] = gMonFootprint_Celebi,
+-    [SPECIES_OLD_UNOWN_B] = gMonFootprint_QuestionMark,
++    [SPECIES_DELTA_BULBASAUR] = gMonFootprint_Bulbasaur,
+     [SPECIES_OLD_UNOWN_C] = gMonFootprint_QuestionMark,
+     [SPECIES_OLD_UNOWN_D] = gMonFootprint_QuestionMark,
+     [SPECIES_OLD_UNOWN_E] = gMonFootprint_QuestionMark,
+diff --git a/src/data/pokemon_graphics/front_pic_anims.h b/src/data/pokemon_graphics/front_pic_anims.h
+index 68cedda..ae4930c 100644
+--- a/src/data/pokemon_graphics/front_pic_anims.h
++++ b/src/data/pokemon_graphics/front_pic_anims.h
+@@ -5506,7 +5506,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
+     [SPECIES_LUGIA]       = sAnims_Lugia,
+     [SPECIES_HO_OH]       = sAnims_HoOh,
+     [SPECIES_CELEBI]      = sAnims_Celebi,
+-    [SPECIES_OLD_UNOWN_B] = sAnims_OldUnownB,
++    [SPECIES_DELTA_BULBASAUR]   = sAnims_Bulbasaur,
+     [SPECIES_OLD_UNOWN_C] = sAnims_OldUnownB,
+     [SPECIES_OLD_UNOWN_D] = sAnims_OldUnownB,
+     [SPECIES_OLD_UNOWN_E] = sAnims_OldUnownB,
+diff --git a/src/data/pokemon_graphics/front_pic_coordinates.h b/src/data/pokemon_graphics/front_pic_coordinates.h
+index 34d5c67..9a967b6 100644
+--- a/src/data/pokemon_graphics/front_pic_coordinates.h
++++ b/src/data/pokemon_graphics/front_pic_coordinates.h
+@@ -256,7 +256,7 @@ const struct MonCoords gMonFrontPicCoords[] =
+     [SPECIES_LUGIA]       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
+     [SPECIES_HO_OH]       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
+     [SPECIES_CELEBI]      = { .size = MON_COORDS_SIZE(40, 40), .y_offset = 14 },
+-    [SPECIES_OLD_UNOWN_B] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  4 },
++    [SPECIES_DELTA_BULBASAUR]   = { .size = MON_COORDS_SIZE(32, 40), .y_offset = 14 },
+     [SPECIES_OLD_UNOWN_C] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  4 },
+     [SPECIES_OLD_UNOWN_D] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  4 },
+     [SPECIES_OLD_UNOWN_E] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  4 },
+diff --git a/src/data/pokemon_graphics/front_pic_table.h b/src/data/pokemon_graphics/front_pic_table.h
+index acb0bba..77dd7d7 100644
+--- a/src/data/pokemon_graphics/front_pic_table.h
++++ b/src/data/pokemon_graphics/front_pic_table.h
+@@ -252,7 +252,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
+     SPECIES_SPRITE(LUGIA, gMonFrontPic_Lugia),
+     SPECIES_SPRITE(HO_OH, gMonFrontPic_HoOh),
+     SPECIES_SPRITE(CELEBI, gMonFrontPic_Celebi),
+-    SPECIES_SPRITE(OLD_UNOWN_B, gMonFrontPic_DoubleQuestionMark),
++    SPECIES_SPRITE(DELTA_BULBASAUR, gMonFrontPic_Bulbasaur),
+     SPECIES_SPRITE(OLD_UNOWN_C, gMonFrontPic_DoubleQuestionMark),
+     SPECIES_SPRITE(OLD_UNOWN_D, gMonFrontPic_DoubleQuestionMark),
+     SPECIES_SPRITE(OLD_UNOWN_E, gMonFrontPic_DoubleQuestionMark),
+diff --git a/src/data/pokemon_graphics/palette_table.h b/src/data/pokemon_graphics/palette_table.h
+index 8bdfd2d..d611059 100644
+--- a/src/data/pokemon_graphics/palette_table.h
++++ b/src/data/pokemon_graphics/palette_table.h
+@@ -252,7 +252,7 @@ const struct CompressedSpritePalette gMonPaletteTable[] =
+     SPECIES_PAL(LUGIA, gMonPalette_Lugia),
+     SPECIES_PAL(HO_OH, gMonPalette_HoOh),
+     SPECIES_PAL(CELEBI, gMonPalette_Celebi),
+-    SPECIES_PAL(OLD_UNOWN_B, gMonPalette_DoubleQuestionMark),
++    SPECIES_PAL(DELTA_BULBASAUR, gMonPalette_DeltaBulbasaur),
+     SPECIES_PAL(OLD_UNOWN_C, gMonPalette_DoubleQuestionMark),
+     SPECIES_PAL(OLD_UNOWN_D, gMonPalette_DoubleQuestionMark),
+     SPECIES_PAL(OLD_UNOWN_E, gMonPalette_DoubleQuestionMark),
+diff --git a/src/data/pokemon_graphics/shiny_palette_table.h b/src/data/pokemon_graphics/shiny_palette_table.h
+index 1db14d8..672e120 100644
+--- a/src/data/pokemon_graphics/shiny_palette_table.h
++++ b/src/data/pokemon_graphics/shiny_palette_table.h
+@@ -252,7 +252,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[] =
+     SPECIES_SHINY_PAL(LUGIA, gMonShinyPalette_Lugia),
+     SPECIES_SHINY_PAL(HO_OH, gMonShinyPalette_HoOh),
+     SPECIES_SHINY_PAL(CELEBI, gMonShinyPalette_Celebi),
+-    SPECIES_SHINY_PAL(OLD_UNOWN_B, gMonShinyPalette_DoubleQuestionMark),
++    SPECIES_SHINY_PAL(DELTA_BULBASAUR, gMonShinyPalette_DeltaBulbasaur),
+     SPECIES_SHINY_PAL(OLD_UNOWN_C, gMonShinyPalette_DoubleQuestionMark),
+     SPECIES_SHINY_PAL(OLD_UNOWN_D, gMonShinyPalette_DoubleQuestionMark),
+     SPECIES_SHINY_PAL(OLD_UNOWN_E, gMonShinyPalette_DoubleQuestionMark),
+diff --git a/src/data/pokemon_graphics/still_front_pic_table.h b/src/data/pokemon_graphics/still_front_pic_table.h
+index 9a77855..7342f34 100644
+--- a/src/data/pokemon_graphics/still_front_pic_table.h
++++ b/src/data/pokemon_graphics/still_front_pic_table.h
+@@ -254,7 +254,7 @@ const struct CompressedSpriteSheet gMonStillFrontPicTable[] =
+     SPECIES_SPRITE(HO_OH,         gMonStillFrontPic_HoOh),
+     SPECIES_SPRITE(CELEBI,        gMonStillFrontPic_Celebi),
+ // Empty slots
+-    SPECIES_SPRITE(OLD_UNOWN_B,   gMonStillFrontPic_DoubleQuestionMark),
++    SPECIES_SPRITE(DELTA_BULBASAUR, gMonStillFrontPic_Bulbasaur),
+     SPECIES_SPRITE(OLD_UNOWN_C,   gMonStillFrontPic_DoubleQuestionMark),
+     SPECIES_SPRITE(OLD_UNOWN_D,   gMonStillFrontPic_DoubleQuestionMark),
+     SPECIES_SPRITE(OLD_UNOWN_E,   gMonStillFrontPic_DoubleQuestionMark),
+diff --git a/src/data/text/move_descriptions.h b/src/data/text/move_descriptions.h
+index 34880f1..bd9f10a 100644
+--- a/src/data/text/move_descriptions.h
++++ b/src/data/text/move_descriptions.h
+@@ -1418,6 +1418,10 @@ static const u8 sPsychoBoostDescription[] = _(
+     "but sharply lowers SP. ATK.");
+ 
+ // MOVE_NONE is ignored in this table. Make sure to always subtract 1 before getting the right pointer.
++static const u8 sSolarLeafDescription[] = _(
++    "A sunlit leaf slices the\n"
++    "foe with a high crit rate.");
++
+ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
+ {
+     [MOVE_POUND - 1] = sPoundDescription,
+@@ -1774,4 +1778,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
+     [MOVE_WATER_PULSE - 1] = sWaterPulseDescription,
+     [MOVE_DOOM_DESIRE - 1] = sDoomDesireDescription,
+     [MOVE_PSYCHO_BOOST - 1] = sPsychoBoostDescription,
++    [MOVE_SOLAR_LEAF - 1] = sSolarLeafDescription,
+ };
+diff --git a/src/data/text/move_names.h b/src/data/text/move_names.h
+index 9f540f1..67a3d6a 100644
+--- a/src/data/text/move_names.h
++++ b/src/data/text/move_names.h
+@@ -355,4 +355,5 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
+     [MOVE_WATER_PULSE] = _("WATER PULSE"),
+     [MOVE_DOOM_DESIRE] = _("DOOM DESIRE"),
+     [MOVE_PSYCHO_BOOST] = _("PSYCHO BOOST"),
++    [MOVE_SOLAR_LEAF] = _("SOLAR LEAF"),
+ };
+diff --git a/src/data/text/species_names.h b/src/data/text/species_names.h
+index 6416aca..c6be603 100644
+--- a/src/data/text/species_names.h
++++ b/src/data/text/species_names.h
+@@ -251,7 +251,7 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
+     [SPECIES_LUGIA] = _("LUGIA"),
+     [SPECIES_HO_OH] = _("HO-OH"),
+     [SPECIES_CELEBI] = _("CELEBI"),
+-    [SPECIES_OLD_UNOWN_B] = _("?"),
++    [SPECIES_DELTA_BULBASAUR] = _("BULBASAUR"),
+     [SPECIES_OLD_UNOWN_C] = _("?"),
+     [SPECIES_OLD_UNOWN_D] = _("?"),
+     [SPECIES_OLD_UNOWN_E] = _("?"),
+diff --git a/src/pokedex.c b/src/pokedex.c
+index a27717f..6b7db49 100644
+--- a/src/pokedex.c
++++ b/src/pokedex.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "bulbasaur_field_notes.h"
+ #include "battle_main.h"
+ #include "bg.h"
+ #include "data.h"
+@@ -273,6 +274,15 @@ static void Task_HandleCaughtMonPageInput(u8);
+ static void Task_ExitCaughtMonPage(u8);
+ static void SpriteCB_SlideCaughtMonToCenter(struct Sprite *sprite);
+ static void PrintBulbasaurFieldNotes(void);
++static bool8 HandleBulbasaurNotesInput(u8 taskId);
++static void RedrawBulbasaurNotes(void);
++
++enum {NOTES_ENCOUNTER, NOTES_RESEARCH, NOTES_DELTA, NOTES_PAGE_COUNT};
++enum {NOTES_PROMPT_NONE, NOTES_PROMPT_NO_PARTY, NOTES_PROMPT_KNOWN, NOTES_PROMPT_LEARNED};
++static EWRAM_DATA u8 sBulbasaurNotesPage = NOTES_ENCOUNTER;
++static EWRAM_DATA u8 sBulbasaurNotesPartySlot = PARTY_SIZE;
++static EWRAM_DATA u8 sBulbasaurNotesMoveSlot = 0;
++static EWRAM_DATA u8 sBulbasaurNotesPrompt = NOTES_PROMPT_NONE;
+ static void PrintMonInfo(u32 num, u32, u32 owned, u32 newEntry);
+ static void PrintMonHeight(u16 height, u8 left, u8 top);
+ static void PrintMonWeight(u16 weight, u8 left, u8 top);
+@@ -1811,7 +1821,7 @@ static void Task_WaitForExitInfoScreen(u8 taskId)
+     if (gTasks[gTasks[taskId].tLoadScreenTaskId].isActive)
+     {
+         // While active, handle scroll input
+-        if (sPokedexView->currentPage == PAGE_INFO && !IsInfoScreenScrolling(gTasks[taskId].tLoadScreenTaskId) && TryDoInfoScreenScroll())
++        if (sBulbasaurNotesPartySlot == PARTY_SIZE && sPokedexView->currentPage == PAGE_INFO && !IsInfoScreenScrolling(gTasks[taskId].tLoadScreenTaskId) && TryDoInfoScreenScroll())
+             StartInfoScreenScroll(&sPokedexView->pokedexList[sPokedexView->selectedPokemon], gTasks[taskId].tLoadScreenTaskId);
+     }
+     else
+@@ -2016,7 +2026,7 @@ static void Task_WaitForExitSearchResultsInfoScreen(u8 taskId)
+     if (gTasks[gTasks[taskId].tLoadScreenTaskId].isActive)
+     {
+         // While active, handle scroll input
+-        if (sPokedexView->currentPage == PAGE_INFO && !IsInfoScreenScrolling(gTasks[taskId].tLoadScreenTaskId) && TryDoInfoScreenScroll())
++        if (sBulbasaurNotesPartySlot == PARTY_SIZE && sPokedexView->currentPage == PAGE_INFO && !IsInfoScreenScrolling(gTasks[taskId].tLoadScreenTaskId) && TryDoInfoScreenScroll())
+             StartInfoScreenScroll(&sPokedexView->pokedexList[sPokedexView->selectedPokemon], gTasks[taskId].tLoadScreenTaskId);
+     }
+     else
+@@ -3270,6 +3280,9 @@ static void Task_LoadInfoScreen(u8 taskId)
+             u16 r2;
+ 
+             sPokedexView->currentPage = PAGE_INFO;
++            sBulbasaurNotesPage = NOTES_ENCOUNTER;
++            sBulbasaurNotesPartySlot = PARTY_SIZE;
++            sBulbasaurNotesPrompt = NOTES_PROMPT_NONE;
+             gPokedexVBlankCB = gMain.vblankCallback;
+             SetVBlankCallback(NULL);
+             r2 = 0;
+@@ -3425,6 +3438,8 @@ static void Task_HandleInfoScreenInput(u8 taskId)
+         PlaySE(SE_DEX_SCROLL);
+         return;
+     }
++    if (sPokedexListItem->dexNum == NATIONAL_DEX_BULBASAUR && HandleBulbasaurNotesInput(taskId))
++        return;
+     if (JOY_NEW(B_BUTTON))
+     {
+         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+@@ -3916,6 +3931,89 @@ static void Task_SwitchScreensFromSizeScreen(u8 taskId)
+ }
+ 
+ #undef tScrolling
++static void SwapBulbasaurNotesSprite(u8 taskId, bool8 delta)
++{
++    u16 id;
++    FreeAndDestroyMonPicSprite(gTasks[taskId].tMonSpriteId);
++    id = CreateMonPicSprite_HandleDeoxys(delta ? SPECIES_DELTA_BULBASAUR : SPECIES_BULBASAUR,
++                                        SHINY_ODDS, 0, TRUE, MON_PAGE_X, MON_PAGE_Y, 0, TAG_NONE);
++    gTasks[taskId].tMonSpriteId = id;
++    if (id != 0xFFFF)
++        gSprites[id].oam.priority = 0;
++}
++
++static bool8 HandleBulbasaurNotesInput(u8 taskId)
++{
++    bool8 delta;
++    u8 i;
++    u16 result;
++
++    if (sBulbasaurNotesPartySlot != PARTY_SIZE)
++    {
++        if (JOY_NEW(B_BUTTON))
++        {
++            sBulbasaurNotesPartySlot = PARTY_SIZE;
++            sBulbasaurNotesPrompt = NOTES_PROMPT_NONE;
++        }
++        else if (JOY_NEW(SELECT_BUTTON))
++            sBulbasaurNotesMoveSlot = (sBulbasaurNotesMoveSlot + 1) % MAX_MON_MOVES;
++        else if (JOY_NEW(A_BUTTON))
++        {
++            struct Pokemon *mon = &gPlayerParty[sBulbasaurNotesPartySlot];
++            u8 bonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
++            bonuses &= ~(3 << (2 * sBulbasaurNotesMoveSlot));
++            SetMonData(mon, MON_DATA_PP_BONUSES, &bonuses);
++            SetMonMoveSlot(mon, MOVE_SOLAR_LEAF, sBulbasaurNotesMoveSlot);
++            sBulbasaurNotesPartySlot = PARTY_SIZE;
++            sBulbasaurNotesPrompt = NOTES_PROMPT_LEARNED;
++        }
++        else
++            return TRUE;
++    }
++    else if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
++    {
++        delta = sBulbasaurNotesPage == NOTES_DELTA;
++        sBulbasaurNotesPage = (sBulbasaurNotesPage + (JOY_NEW(R_BUTTON) ? 1 : NOTES_PAGE_COUNT - 1)) % NOTES_PAGE_COUNT;
++        if (delta != (sBulbasaurNotesPage == NOTES_DELTA) && (BulbasaurNotes_GetUnlocks() & BULBASAUR_NOTES_DELTA))
++            SwapBulbasaurNotesSprite(taskId, sBulbasaurNotesPage == NOTES_DELTA);
++        sBulbasaurNotesPrompt = NOTES_PROMPT_NONE;
++        PlaySE(SE_DEX_PAGE);
++    }
++    else if (JOY_NEW(A_BUTTON) && sBulbasaurNotesPage == NOTES_RESEARCH)
++    {
++        if (!(BulbasaurNotes_GetUnlocks() & BULBASAUR_NOTES_RESEARCH))
++        {
++            PlaySE(SE_FAILURE);
++            return TRUE;
++        }
++        sBulbasaurNotesPrompt = NOTES_PROMPT_NO_PARTY;
++        for (i = 0; i < gPlayerPartyCount; i++)
++        {
++            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_BULBASAUR)
++                continue;
++            result = GiveMoveToMon(&gPlayerParty[i], MOVE_SOLAR_LEAF);
++            if (result == MON_ALREADY_KNOWS_MOVE)
++            {
++                sBulbasaurNotesPrompt = NOTES_PROMPT_KNOWN;
++                continue;
++            }
++            if (result == MON_HAS_MAX_MOVES)
++            {
++                sBulbasaurNotesPartySlot = i;
++                sBulbasaurNotesMoveSlot = 0;
++            }
++            else
++                sBulbasaurNotesPrompt = NOTES_PROMPT_LEARNED;
++            break;
++        }
++    }
++    else
++        return FALSE;
++
++    RedrawBulbasaurNotes();
++    return TRUE;
++}
++
+ #undef tMonSpriteDone
+ #undef tBgLoaded
+ #undef tSkipCry
+@@ -4158,15 +4256,38 @@ static void PrintBulbasaurFieldNotes(void)
+ {
+     static const u8 sHeading[] = _("FIELD NOTES");
+     static const u8 sSpecies[] = _("No. 001  BULBASAUR");
+-    static const u8 sSubheading[] = _("ENCOUNTER CHECKLIST");
++    static const u8 sDeltaSpecies[] = _("No. 001  DELTA FORM");
++    static const u8 sEncounter[] = _("ENCOUNTER CHECKLIST");
++    static const u8 sResearch[] = _("RESEARCH CHECKLIST");
++    static const u8 sDelta[] = _("DELTA CHECKLIST");
+     static const u8 sPlant[] = _("Plant a Lum Berry.");
+     static const u8 sPlot[] = _("Leave an open plot next to it.");
+     static const u8 sSun[] = _("Check on a sunny day.");
+     static const u8 sTime[] = _("Check in the peak of the day.");
+-    enum {TASK_HIDDEN, TASK_REVEALED, TASK_COMPLETED};
+-    static const u8 sUnknown[] = _("?????");
+-    static const u8 *const sTasks[] = {sPlant, sPlot, sSun, sTime};
+-    static const u8 sStates[] = {TASK_REVEALED, TASK_REVEALED, TASK_REVEALED, TASK_REVEALED};
++    static const u8 sAbsorb[] = _("Use Absorb.");
++    static const u8 sGrowth[] = _("Use Growth.");
++    static const u8 sRazor[] = _("Use Razor Leaf.");
++    static const u8 sSameBattle[] = _("Do all three in the same battle.");
++    static const u8 sSludge[] = _("Hold a Toxic Sludge.");
++    static const u8 sCave[] = _("Battle in a cave.");
++    static const u8 sPoison[] = _("Use a Poison-type move.");
++    static const u8 sWin[] = _("Win that battle.");
++    static const u8 sLocked[] = _("Unlock: ?????");
++    static const u8 sSolarLeaf[] = _("Unlock: Solar Leaf    A: Teach");
++    static const u8 sDeltaUnlocked[] = _("Unlocked: Delta Bulbasaur");
++    static const u8 sNoParty[] = _("No Bulbasaur in the party.");
++    static const u8 sAlreadyKnown[] = _("Bulbasaur already knows Solar Leaf.");
++    static const u8 sLearned[] = _("Bulbasaur learned Solar Leaf!");
++    static const u8 sReplace[] = _("A: Replace ");
++    static const u8 sBrowse[] = _("L/R: Pages");
++    static const u8 sCycle[] = _("SELECT: Next");
++    static const u8 *const sTitles[] = {sEncounter, sResearch, sDelta};
++    static const u8 *const sTasks[][4] =
++    {
++        {sPlant, sPlot, sSun, sTime},
++        {sAbsorb, sGrowth, sRazor, sSameBattle},
++        {sSludge, sCave, sPoison, sWin},
++    };
+     static const u16 sMarkerPalette[] = {RGB(9, 6, 14), RGB(10, 17, 6), RGB(23, 23, 11), RGB(31, 30, 27), RGB(16, 15, 17)};
+     static const u8 sSafariBall[8][8] =
+     {
+@@ -4181,8 +4302,34 @@ static void PrintBulbasaurFieldNotes(void)
+     };
+     static const u8 sInk[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_TRANSPARENT};
+     static const u8 sMutedInk[] = {TEXT_COLOR_TRANSPARENT, 7, TEXT_COLOR_TRANSPARENT};
+-    u8 i;
+-    u8 y, row, col;
++    const u8 *species = sSpecies;
++    const u8 *reward = sLocked;
++    u16 unlocks = BulbasaurNotes_GetUnlocks();
++    u8 completedRows = 0;
++    u8 i, y, row, col;
++
++    if (sBulbasaurNotesPage == NOTES_RESEARCH && (unlocks & BULBASAUR_NOTES_RESEARCH))
++    {
++        completedRows = 4;
++        reward = sSolarLeaf;
++        if (sBulbasaurNotesPrompt == NOTES_PROMPT_NO_PARTY)
++            reward = sNoParty;
++        else if (sBulbasaurNotesPrompt == NOTES_PROMPT_KNOWN)
++            reward = sAlreadyKnown;
++        else if (sBulbasaurNotesPrompt == NOTES_PROMPT_LEARNED)
++            reward = sLearned;
++    }
++    else if (sBulbasaurNotesPage == NOTES_DELTA && (unlocks & BULBASAUR_NOTES_DELTA))
++    {
++        completedRows = 4;
++        species = sDeltaSpecies;
++        reward = sDeltaUnlocked;
++    }
++
++    if (sBulbasaurNotesPage == NOTES_RESEARCH && !(unlocks & BULBASAUR_NOTES_RESEARCH))
++        completedRows = (unlocks >> BULBASAUR_NOTES_RESEARCH_PROGRESS_SHIFT) & 3;
++    else if (sBulbasaurNotesPage == NOTES_DELTA && !(unlocks & BULBASAUR_NOTES_DELTA))
++        completedRows = (unlocks >> BULBASAUR_NOTES_DELTA_PROGRESS_SHIFT) & 3;
+ 
+     LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0)], BG_PLTT_ID(13), PLTT_SIZE_4BPP);
+     LoadPalette(sMarkerPalette, BG_PLTT_ID(13) + 3, sizeof(sMarkerPalette));
+@@ -4190,24 +4337,22 @@ static void PrintBulbasaurFieldNotes(void)
+     PutWindowTilemap(WIN_INFO);
+     PutWindowTilemap(WIN_FOOTPRINT);
+     SetWindowAttribute(WIN_INFO, WINDOW_PALETTE_NUM, 0);
+-    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
+-                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sHeading, 128),
++
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 88 + GetStringCenterAlignXOffset(FONT_NARROW, sHeading, 128),
+                                  26, 0, 0, sInk, TEXT_SKIP_DRAW, sHeading);
+-    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
+-                                 88 + GetStringCenterAlignXOffset(FONT_NARROW, sSpecies, 128),
+-                                 41, 0, 0, sInk, TEXT_SKIP_DRAW, sSpecies);
+-    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW,
+-                                 82 + GetStringCenterAlignXOffset(FONT_NARROW, sSubheading, 128),
+-                                 72, 0, 0, sInk, TEXT_SKIP_DRAW, sSubheading);
+-    for (i = 0; i < ARRAY_COUNT(sTasks); i++)
+-    {
+-        y = 95 + 15 * i;
+-        if (sStates[i] == TASK_REVEALED)
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 88 + GetStringCenterAlignXOffset(FONT_NARROW, species, 128),
++                                 41, 0, 0, sInk, TEXT_SKIP_DRAW, species);
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 82 + GetStringCenterAlignXOffset(FONT_NARROW, sTitles[sBulbasaurNotesPage], 128),
++                                 72, 0, 0, sInk, TEXT_SKIP_DRAW, sTitles[sBulbasaurNotesPage]);
++    for (i = 0; i < ARRAY_COUNT(sTasks[0]); i++)
++    {
++        y = 94 + 12 * i;
++        if (i >= completedRows)
+         {
+             FillWindowPixelRect(WIN_INFO, PIXEL_FILL(3), 18, y + 3, 7, 7);
+             FillWindowPixelRect(WIN_INFO, PIXEL_FILL(0), 19, y + 4, 5, 5);
+         }
+-        else if (sStates[i] == TASK_COMPLETED)
++        else
+         {
+             for (row = 0; row < 8; row++)
+                 for (col = 0; col < 8; col++)
+@@ -4215,9 +4360,27 @@ static void PrintBulbasaurFieldNotes(void)
+                         FillWindowPixelRect(WIN_INFO, PIXEL_FILL(sSafariBall[row][col]), 18 + col, y + 2 + row, 1, 1);
+         }
+         AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 32, y, 0, 0,
+-                                     sStates[i] == TASK_COMPLETED ? sInk : sMutedInk, TEXT_SKIP_DRAW,
+-                                     sStates[i] == TASK_HIDDEN ? sUnknown : sTasks[i]);
++                                     i < completedRows ? sInk : sMutedInk, TEXT_SKIP_DRAW, sTasks[sBulbasaurNotesPage][i]);
++    }
++
++    if (sBulbasaurNotesPartySlot != PARTY_SIZE)
++    {
++        u16 move = GetMonData(&gPlayerParty[sBulbasaurNotesPartySlot], MON_DATA_MOVE1 + sBulbasaurNotesMoveSlot);
++        StringCopy(StringCopy(gStringVar4, sReplace), gMoveNames[move]);
++        AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 18, 144, 0, 0, sInk, TEXT_SKIP_DRAW, gStringVar4);
+     }
++    else if (sBulbasaurNotesPage != NOTES_ENCOUNTER)
++        AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 18, 144, 0, 0,
++                                     completedRows == 4 ? sInk : sMutedInk, TEXT_SKIP_DRAW, reward);
++    AddTextPrinterParameterized4(WIN_INFO, FONT_NARROW, 174, 144, 0, 0, sMutedInk, TEXT_SKIP_DRAW,
++                                 sBulbasaurNotesPartySlot != PARTY_SIZE ? sCycle : sBrowse);
++}
++
++static void RedrawBulbasaurNotes(void)
++{
++    FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
++    PrintBulbasaurFieldNotes();
++    CopyWindowToVram(WIN_INFO, COPYWIN_FULL);
+ }
+ 
+ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
+diff --git a/src/pokemon.c b/src/pokemon.c
+index 4b5c197..df93a45 100644
+--- a/src/pokemon.c
++++ b/src/pokemon.c
+@@ -5676,6 +5676,8 @@ u16 NationalToHoennOrder(u16 nationalNum)
+ 
+ u16 SpeciesToNationalPokedexNum(u16 species)
+ {
++    if (species == SPECIES_DELTA_BULBASAUR)
++        return NATIONAL_DEX_BULBASAUR;
+     if (!species)
+         return 0;
+ 
+diff --git a/src/pokemon_icon.c b/src/pokemon_icon.c
+index caed0bc..af4f16a 100644
+--- a/src/pokemon_icon.c
++++ b/src/pokemon_icon.c
+@@ -275,7 +275,7 @@ const u8 *const gMonIconTable[] =
+     [SPECIES_LUGIA] = gMonIcon_Lugia,
+     [SPECIES_HO_OH] = gMonIcon_HoOh,
+     [SPECIES_CELEBI] = gMonIcon_Celebi,
+-    [SPECIES_OLD_UNOWN_B] = gMonIcon_QuestionMark,
++    [SPECIES_DELTA_BULBASAUR] = gMonIcon_Bulbasaur,
+     [SPECIES_OLD_UNOWN_C] = gMonIcon_QuestionMark,
+     [SPECIES_OLD_UNOWN_D] = gMonIcon_QuestionMark,
+     [SPECIES_OLD_UNOWN_E] = gMonIcon_QuestionMark,
+diff --git a/src/wild_encounter.c b/src/wild_encounter.c
+index e50855a..ab6626f 100644
+--- a/src/wild_encounter.c
++++ b/src/wild_encounter.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "bulbasaur_field_notes.h"
+ #include "battle_setup.h"
+ #include "battle_pike.h"
+ #include "battle_pyramid.h"
+@@ -451,7 +452,10 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
+     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
+         return FALSE;
+ 
+-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
++    if (area == WILD_AREA_LAND && BulbasaurNotes_OfferDeltaEncounter())
++        CreateWildMon(SPECIES_DELTA_BULBASAUR, level);
++    else
++        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+     return TRUE;
+ }
+ 
