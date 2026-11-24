@@ -66,3 +66,6 @@ Rework only the opening stretch before expanding the art workload:
 The test repository currently contains the Reedwake campaign document, a starter/opening source patch, Emerald graphics reference material, a Pokédex background export, and a Bulbasaur research/Delta UI prototype. It does not contain a complete checked-out pokeemerald-expansion source tree. Treat binary/patch experiments as the current implementation boundary; do not claim the full campaign, all 386 Delta forms, or a distributable ROM is complete until those assets and systems are actually built and checked in.
 
 The existing campaign document describes 60 original species. That is a separate roster decision from the earlier 386-species Delta plan and should not be silently treated as the same scope. Keep both documented until the project owner resolves how those plans fit together.
+
+
+The first reviewable asset slice on this branch adds a six-bank JASC palette variant and a 240 × 160 Field Notes SVG mockup. They establish and preview the screen direction; they are not yet wired into the ROM or compiled as a patch.
