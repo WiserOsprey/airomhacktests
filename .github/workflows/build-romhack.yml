@@ -1,0 +1,116 @@
+name: Build Reedwake BPS patch
+
+on:
+  push:
+    branches:
+      - scientific-fantasy-overhaul
+    paths:
+      - .github/workflows/build-romhack.yml
+      - tools/create_bps.py
+      - tools/install_science_palette.py
+      - purple-pokedex-gba/science-fantasy/bg_science_fantasy.pal
+      - Reedwake - Source.patch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout hack source, patches, and assets
+        uses: actions/checkout@v4
+
+      - name: Checkout clean Emerald base from test repository
+        uses: actions/checkout@v4
+        with:
+          repository: WiserOsprey/test
+          ref: main
+          path: base
+
+      - name: Checkout matching Emerald decompilation
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeemerald
+          ref: 9103e529c2fbdd7add4a1ff3350c6c1f92112c42
+          path: source
+
+      - name: Checkout agbcc
+        uses: actions/checkout@v4
+        with:
+          repository: pret/agbcc
+          path: source/agbcc
+
+      - name: Verify clean US Emerald base
+        run: |
+          cd base
+          echo "f3ae088181bf583e55daf962a92bb46f4f1d07b7  Pokemon - Emerald Version (U).gba" | sha1sum --check -
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential gcc-arm-none-eabi binutils-arm-none-eabi libpng-dev
+
+      - name: Install clean base ROM for the matching build
+        run: cp "base/Pokemon - Emerald Version (U).gba" source/baserom.gba
+
+      - name: Build agbcc
+        working-directory: source/agbcc
+        run: |
+          ./build.sh
+          ./install.sh ../
+
+      - name: Apply Reedwake and Pokédex patches
+        run: |
+          git -C source apply --binary "$GITHUB_WORKSPACE/Reedwake - Source.patch"
+          mkdir -p source/graphics/pokedex/purple
+          cp purple-pokedex-gba/background.4bpp source/graphics/pokedex/purple/background.4bpp
+          cp purple-pokedex-gba/list_underlay.bin source/graphics/pokedex/purple/list_underlay.bin
+          cp purple-pokedex-gba/background.gbapal source/graphics/pokedex/purple/background.gbapal
+          cp purple-pokedex-gba/fitted/foreground.4bpp source/graphics/pokedex/purple/foreground.4bpp
+          cp purple-pokedex-gba/fitted/foreground.tilemap source/graphics/pokedex/purple/foreground.tilemap
+          cp purple-pokedex-gba/fitted/foreground.gbapal source/graphics/pokedex/purple/foreground.gbapal
+          git -C source apply --binary "$GITHUB_WORKSPACE/purple-pokedex-gba/fitted/pokedex-foreground.patch"
+          git -C source apply --binary "$GITHUB_WORKSPACE/purple-pokedex-gba/fitted/bulbasaur-field-notes.patch"
+          git -C source apply --binary "$GITHUB_WORKSPACE/purple-pokedex-gba/fitted/research-delta/research-delta.patch"
+          python3 tools/install_science_palette.py "$GITHUB_WORKSPACE/source" "$GITHUB_WORKSPACE/purple-pokedex-gba/science-fantasy/bg_science_fantasy.pal"
+
+      - name: Build the ROM
+        working-directory: source
+        env:
+          GAME_VERSION: EMERALD
+          GAME_REVISION: 0
+          GAME_LANGUAGE: ENGLISH
+          MODERN: 0
+          COMPARE: 0
+        run: make -j2 all
+
+      - name: Create BPS patch only
+        run: |
+          mkdir -p dist
+          python3 tools/create_bps.py "base/Pokemon - Emerald Version (U).gba" source/pokeemerald.gba dist/Reedwake-Scientific-Fantasy.bps
+          cat > dist/README.txt <<'EOF'
+          Reedwake: Scientific Fantasy — early playable prototype
+
+          Patch format: BPS
+          Required base: clean US Pokémon Emerald, revision 0
+          Required base SHA1: f3ae088181bf583e55daf962a92bb46f4f1d07b7
+
+          Apply this patch to a clean base ROM with a BPS patcher.
+          The artifact contains the patch only, not the game ROM.
+
+          Includes the Reedwake opening changes and the science-fantasy Pokédex palette,
+          plus the current Bulbasaur Field Notes / Research / Delta prototype.
+          It is not the completed campaign or the full 386-species Delta roster.
+          EOF
+
+      - name: Upload patch artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Reedwake-Scientific-Fantasy-BPS
+          path: |
+            dist/Reedwake-Scientific-Fantasy.bps
+            dist/README.txt
+          if-no-files-found: error
+          retention-days: 30
