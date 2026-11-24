@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" shape-rendering="crispEdges">
+<rect width="240" height="160" fill="#101528"/>
+<path d="M0 20H240M0 24H240" stroke="#30485b" stroke-width="1"/>
+<g fill="#b4d4c8">
+<rect x="12" y="7" width="1" height="1"/><rect x="28" y="13" width="1" height="1"/><rect x="207" y="8" width="1" height="1"/><rect x="225" y="16" width="1" height="1"/>
+</g>
+<path d="M0 17H240" stroke="#426a6b" stroke-width="1"/>
+<path d="M6 6H234V154H6Z" fill="none" stroke="#e8d7b0" stroke-width="2"/>
+<path d="M8 8H232V18H8Z" fill="#202a3d"/>
+<text x="120" y="15" fill="#f0e3c0" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">FIELD NOTES  /  VAELWATER</text>
+<!-- left specimen panel -->
+<rect x="10" y="22" width="78" height="104" fill="#e8ddbf" stroke="#b69563" stroke-width="2"/>
+<rect x="13" y="25" width="72" height="8" fill="#263a42"/>
+<text x="49" y="31" fill="#d9eee0" font-family="monospace" font-size="5" text-anchor="middle">SPECIMEN 001</text>
+<!-- original bulb creature placeholder -->
+<g stroke="#172b2a" stroke-width="2">
+<path d="M32 81L32 68L40 61L52 62L61 69L64 82L59 91L39 91Z" fill="#74a769"/>
+<path d="M38 66L35 53L43 59L49 61L52 51L59 63L63 71" fill="#498b63"/>
+<path d="M40 75H43M55 75H58" stroke="#172b2a" stroke-width="3"/>
+<path d="M40 90L38 97L45 97L47 91M55 90L57 97L63 97L60 89" fill="#6b8f60"/>
+<path d="M40 59L42 52L48 58M52 56L55 47L61 56" fill="#4e875c"/>
+<path d="M45 56L48 46L55 43L62 47L63 56L55 62Z" fill="#5c9d5d"/>
+<path d="M51 48V59M57 46V59" stroke="#a4c875" stroke-width="2"/>
+</g>
+<path d="M22 109H76" stroke="#a8b78d" stroke-width="1"/>
+<text x="49" y="118" fill="#23353a" font-family="monospace" font-size="6" text-anchor="middle">FIELD SKETCH</text>
+<!-- notes panel -->
+<rect x="92" y="22" width="138" height="104" fill="#e8ddbf" stroke="#b69563" stroke-width="2"/>
+<rect x="95" y="25" width="132" height="11" fill="#263a42"/>
+<text x="99" y="33" fill="#f0e3c0" font-family="monospace" font-size="7" font-weight="bold">BULBASAUR</text>
+<rect x="193" y="27" width="30" height="7" fill="#477b58"/>
+<text x="208" y="32.5" fill="#f2eed7" font-family="monospace" font-size="5" text-anchor="middle">GRASS</text>
+<text x="99" y="45" fill="#34484a" font-family="monospace" font-size="5">HABITAT / LOWER CANAL</text>
+<text x="99" y="52" fill="#182a34" font-family="monospace" font-size="6">Dusk • damp stone • reed shade</text>
+<path d="M99 57H222" stroke="#b7a781"/>
+<text x="99" y="66" fill="#34484a" font-family="monospace" font-size="5">RESEARCH EVIDENCE</text>
+<rect x="99" y="70" width="96" height="5" fill="#c7c4a6"/>
+<rect x="99" y="70" width="58" height="5" fill="#498b76"/>
+<text x="201" y="75" fill="#182a34" font-family="monospace" font-size="6">03/05</text>
+<text x="99" y="85" fill="#34484a" font-family="monospace" font-size="5">OBSERVED</text>
+<text x="99" y="93" fill="#182a34" font-family="monospace" font-size="6">Canopy warms before rain</text>
+<path d="M99 98H222" stroke="#b7a781"/>
+<rect x="99" y="103" width="123" height="16" fill="#d8cfad" stroke="#9f875c"/>
+<text x="104" y="110" fill="#30484b" font-family="monospace" font-size="5">DELTA STUDY: LOCKED</text>
+<text x="104" y="116" fill="#66533c" font-family="monospace" font-size="4.5">Transformation is permanent</text>
+<!-- navigation -->
+<rect x="10" y="131" width="220" height="18" fill="#202a3d" stroke="#e8d7b0" stroke-width="1"/>
+<rect x="12" y="133" width="68" height="14" fill="#477b58"/>
+<text x="46" y="142" fill="#f2eed7" font-family="monospace" font-size="6" text-anchor="middle">FIELD</text>
+<text x="120" y="142" fill="#d9d0b5" font-family="monospace" font-size="6" text-anchor="middle">RESEARCH</text>
+<text x="195" y="142" fill="#d9d0b5" font-family="monospace" font-size="6" text-anchor="middle">DELTA</text>
+</svg>
