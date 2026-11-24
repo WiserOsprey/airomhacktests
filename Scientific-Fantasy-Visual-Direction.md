@@ -61,11 +61,12 @@ Rework only the opening stretch before expanding the art workload:
 - One complete species Field Notes / Research / Delta flow demonstrates the science-fantasy interface and permanent-transformation rule.
 - Lockmere's first gym puzzle turns the region's flood-control technology into an understandable Pokémon-style route challenge.
 
-## Implementation notes
+## Current implementation
 
-The test repository currently contains the Reedwake campaign document, a starter/opening source patch, Emerald graphics reference material, a Pokédex background export, and a Bulbasaur research/Delta UI prototype. It does not contain a complete checked-out pokeemerald-expansion source tree. Treat binary/patch experiments as the current implementation boundary; do not claim the full campaign, all 386 Delta forms, or a distributable ROM is complete until those assets and systems are actually built and checked in.
+The public `WiserOsprey/test` repository supplies the clean Pokémon Emerald (U) base ROM. A reproducible GitHub Actions build in the private `WiserOsprey/airomhacktests` source repository checks that base against its expected SHA-1, applies the Reedwake opening and Bulbasaur interface patches, imports the matching pokeemerald source, applies the science-fantasy palette conversion, and compiles the prototype.
+
+The successful workflow packages a **BPS patch and README**, not a ROM. The prototype contains opening/campaign changes and a Bulbasaur Field Notes / Research / Delta slice. It is a buildable first prototype; it is not a complete regional game. The full Pokédex interface, complete campaign, and all 386 Delta forms have not been implemented.
 
 The existing campaign document describes 60 original species. That is a separate roster decision from the earlier 386-species Delta plan and should not be silently treated as the same scope. Keep both documented until the project owner resolves how those plans fit together.
 
-
-The first reviewable asset slice on this branch adds a six-bank JASC palette variant and a 240 × 160 Field Notes SVG mockup. They establish and preview the screen direction; they are not yet wired into the ROM or compiled as a patch.
+The science-fantasy palette is a six-bank JASC palette conversion used by the prototype build. The 240 × 160 Field Notes SVG remains a visual mockup/reference, not a complete in-game interface.
