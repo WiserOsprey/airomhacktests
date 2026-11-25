@@ -31,7 +31,7 @@ Gym aces remain the listed final stages and retain their campaign ace levels. Ev
 | 16 | Sootwing | Wickmoth | Lanterfly | Bug → Bug/Fire → Bug/Fire | Bug/Water → Bug/Water → Fire/Water | 10, 24 | A night pollinator that uses heat to reveal nectar-bearing plants |
 | 17 | Draftlet | Shelfkite | Thermwing | Flying → Flying/Psychic → Flying/Psychic | Flying/Ice → Flying/Ice → Psychic/Ice | 16, 34 | A wind-shelf glider that senses pressure fronts before storms |
 | 18 | Flintlet | Chertshell | Prismare | Rock → Rock → Rock/Psychic | Rock/Steel → Rock/Steel → Psychic/Steel | 16, 34 | A fossil-shell species that bends light through mineral growth rings |
-| 19 | Coilfin | Sparkspine | Lumensturgeon | Water → Water/Electric → Water/Electric | Water/Psychic → Water/Psychic → Electric/Psychic | 16, 34 | A deep-channel fish that maps relay currents with electroreception |
+| 19 | Coilfin | Sparkspine | Lumenstur | Water → Water/Electric → Water/Electric | Water/Psychic → Water/Psychic → Electric/Psychic | 16, 34 | A deep-channel fish that maps relay currents with electroreception |
 | 20 | Rootling | Vineram | Wellwyrm | Grass → Grass/Ground → Grass/Dragon | Grass/Ice → Ground/Ice → Dragon/Ice | 16, 40 | A rare watershed guardian tied to the oldest headwater springs |
 
 ## Research and Delta rules
@@ -59,4 +59,4 @@ Generated concept images may guide shape and color, but they are not game assets
 
 ## Naming note
 
-Names in this roster are working names. The first pass preserves the established names Fernut, Bramblet, Canoplate, Cindrix, Flareden, Vulprism, Rillfin, Bendruff, Estuarch, Peathare, Siltstilt, Podtick, Lockmole, Graftwing, Galegull, Arcrail, Wakewisp, Glazeback, Calverime, and Tiderook. All other names are provisional. The regional Dex should not reuse existing Pokémon names or leave temporary base-species names in visible text.
+Names in this roster are working names. The first pass preserves the established names Fernut, Bramblet, Canoplate, Cindrix, Flareden, Vulprism, Rillfin, Bendruff, Estuarch, Peathare, Siltstilt, Podtick, Lockmole, Graftwing, Galegull, Arcrail, Wakewisp, Glazeback, Calverime, and Tiderook. All other names are provisional. Keep species names within the GBA's ten-character name limit; do not reuse existing Pokémon names or leave temporary base-species names in visible text.
