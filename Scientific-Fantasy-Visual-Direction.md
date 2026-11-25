@@ -35,10 +35,11 @@ Environmental puzzles should teach the player how people read and work with the 
 ## Pokémon identity and research
 
 - Pokémon remain ordinary inhabitants and partners of this world. The research apparatus documents their behavior; it does not replace the familiar capture, training, evolution, and battle loop.
+- The regional Pokédex contains 60 original species. Each species has one predetermined Delta form, for 60 standard species and 60 experimental forms.
+- A completed, species-specific experiment permanently transforms the selected Pokémon; it does not create a duplicate. Explain that consequence before confirmation.
 - Field Notes make discovery visible: where a species is found, what conditions draw it out, and what the player's observations have established.
-- Preserve the earlier Delta design decisions if the 386-species scope remains active: one predetermined Delta form per species; a completed, species-specific experiment permanently transforms that Pokémon; and evolved forms may have separate, harder encounter paths.
-- Research rewards can include a signature move, ability, or other species-specific benefit. The path should use a varied mix of encounter, observation, and practical field tasks, rather than a generic checklist repeated for every species.
-- Keep prototype/sample content labeled as such until the complete roster and encounter plan are in the project.
+- Research paths use a species-specific mix of encounter, observation, and practical field tasks. Rewards can include a signature move, ability, or another species-specific benefit.
+- Delta forms change anatomy and sprite silhouette as well as typing; a palette swap alone is not a finished form.
 
 ## Interface direction
 
@@ -63,10 +64,10 @@ Rework only the opening stretch before expanding the art workload:
 
 ## Current implementation
 
-The public `WiserOsprey/test` repository supplies the clean Pokémon Emerald (U) base ROM. A reproducible GitHub Actions build in the private `WiserOsprey/airomhacktests` source repository checks that base against its expected SHA-1, applies the Reedwake opening and Bulbasaur interface patches, imports the matching pokeemerald source, applies the science-fantasy palette conversion, and compiles the prototype.
+The public `WiserOsprey/test` repository supplies the clean Pokémon Emerald (U) base ROM. The `WiserOsprey/airomhacktests` source branch has a reproducible GitHub Actions prototype build that checks that base against its expected SHA-1, applies the Reedwake opening and Bulbasaur interface patches, uses a matching pokeemerald source revision, installs the science-fantasy palette, and compiles a BPS patch.
 
-The successful workflow packages a **BPS patch and README**, not a ROM. The prototype contains opening/campaign changes and a Bulbasaur Field Notes / Research / Delta slice. It is a buildable first prototype; it is not a complete regional game. The full Pokédex interface, complete campaign, and all 386 Delta forms have not been implemented.
+That prototype is a buildable opening slice, not the complete regional game. The campaign conversion, all 60 regional species, their 60 Delta forms, the full sprite roster, and all routes and trainer data still need implementation.
 
-The existing campaign document describes 60 original species. That is a separate roster decision from the earlier 386-species Delta plan and should not be silently treated as the same scope. Keep both documented until the project owner resolves how those plans fit together.
+The current early custom sprite files are prototypes. Some retain the source species' original silhouette with a new palette. They are below the intended art bar. Final standard and Delta sprites should be drawn as species-specific pixel art at the configured Emerald sprite dimensions, with clean silhouettes, coherent front/back anatomy, deliberate shade ramps, and readable details at native GBA scale. Do not ship the generated concept sheet directly as game art.
 
 The science-fantasy palette is a six-bank JASC palette conversion used by the prototype build. The 240 × 160 Field Notes SVG remains a visual mockup/reference, not a complete in-game interface.
